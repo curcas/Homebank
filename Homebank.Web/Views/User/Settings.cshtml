@@ -1,0 +1,39 @@
+﻿@model Homebank.Web.Models.SettingsModel
+
+<form method="POST" role="form" class="form-horizontal">
+	@Html.AntiForgeryToken()
+	@Html.HiddenFor(m => m.OriginalName)
+	<div class="form-group">
+		@Html.LabelFor(m => m.Name, "Name", new { @class = "col-md-2 col-sm-2 control-label" })
+		<div class="col-md-10 col-sm-10">
+			@Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+			@Html.ValidationMessageFor(m => m.Name, "", new { @class = "help-block text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.OldPassword, "Old password", new { @class = "col-md-2 col-sm-2 control-label" })
+		<div class="col-md-10 col-sm-10">
+			@Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.OldPassword, "", new { @class = "help-block text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.NewPassword, "New password", new { @class = "col-md-2 col-sm-2 control-label" })
+		<div class="col-md-10 col-sm-10">
+			@Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "help-block text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.NewPasswordRepeat, "Repeat new password", new { @class = "col-md-2 col-sm-2 control-label" })
+		<div class="col-md-10 col-sm-10">
+			@Html.PasswordFor(m => m.NewPasswordRepeat, new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.NewPasswordRepeat, "", new { @class = "help-block text-danger" })
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-sm-offset-2 col-md-10 col-sm-10">
+			<button type="submit" class="btn btn-default">Save</button>
+		</div>
+	</div>
+</form>

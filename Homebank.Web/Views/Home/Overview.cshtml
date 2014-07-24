@@ -1,0 +1,32 @@
+﻿@model Homebank.Web.Models.AccountOverviewModel
+
+<div class="row">
+	<div class="col-md-12 col-sm-12">
+		<table class="table table-bordered table-striped linkify">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Future balance</th>
+					<th>Current balance</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var account in Model.Accounts)
+				{
+					<tr>
+						<td>@Html.ActionLink(account.Name, "Show", "Account", new { id = account.Id }, null)</td>
+						<td>@Html.ActionLink(account.FutureBalance.ToString("F"), "Show", "Account", new { id = account.Id }, null)</td>
+						<td>@Html.ActionLink(account.CurrentBalance.ToString("F"), "Show", "Account", new { id = account.Id }, null)</td>
+					</tr>
+				}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>Total</td>
+					<td>@Model.Accounts.Sum(a => a.FutureBalance).ToString("F")</td>
+					<td>@Model.Accounts.Sum(a => a.CurrentBalance).ToString("F")</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
