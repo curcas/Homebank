@@ -48,6 +48,7 @@ namespace Homebank.Repositories
 				.Where(p => p.Bookings.Any(b => b.Account.User.Id == user.Id))
 				.Where(p => p.Description.Contains(description))
 				.Select(p => p.Description)
+				.Distinct()
 				.ToList();
 		} 
 	}
