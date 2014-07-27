@@ -19,7 +19,7 @@
 	<div class="form-group">
 		@Html.LabelFor(m => m.Amount, "Amount", new { @class = "col-md-2 col-sm-2 control-label" })
 		<div class="col-md-10 col-sm-10">
-			@Html.TextBoxFor(m => m.Amount, new { @class = "form-control", placeholder = "Amount" })
+			@Html.EditorFor(m => m.Amount, new { htmlAttributes = new { @class = "form-control", placeholder = "Amount" } })
 			@Html.ValidationMessageFor(m => m.Amount, "", new { @class = "help-block text-danger" })
 		</div>
 	</div>
