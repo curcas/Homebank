@@ -59,7 +59,7 @@ namespace Homebank.Web.Controllers
 
 				templateList.Add(new Template
 				{
-					Name = "Empty",
+					Name = "Default",
 					Link = Url.Action("Add", "Transaction", new { id = account.Id })
 				});
 
