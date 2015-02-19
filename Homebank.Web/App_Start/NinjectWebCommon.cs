@@ -17,7 +17,7 @@ namespace Homebank.Web.App_Start
 
     public static class NinjectWebCommon 
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -26,7 +26,7 @@ namespace Homebank.Web.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            Bootstrapper.Initialize(CreateKernel);
         }
         
         /// <summary>
@@ -34,7 +34,7 @@ namespace Homebank.Web.App_Start
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
         
         /// <summary>
@@ -73,6 +73,7 @@ namespace Homebank.Web.App_Start
 			kernel.Bind<CategoryRepository>().To<CategoryRepository>().InRequestScope();
 			kernel.Bind<TransactionRepository>().To<TransactionRepository>().InRequestScope();
 			kernel.Bind<TemplateRepository>().To<TemplateRepository>().InRequestScope();
+			kernel.Bind<ReportingRepository>().To<ReportingRepository>().InRequestScope();	
         }        
     }
 }

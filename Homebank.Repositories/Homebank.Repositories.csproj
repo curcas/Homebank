@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BookingRepository.cs" />
     <Compile Include="Mappings\BookingMapping.cs" />
+    <Compile Include="ReportingRepository.cs" />
     <Compile Include="TemplateRepository.cs" />
     <Compile Include="Mappings\TemplateMapping.cs" />
     <Compile Include="TransactionRepository.cs" />

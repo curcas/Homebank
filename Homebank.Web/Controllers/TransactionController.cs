@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Configuration;
-using System.Web;
-using System.Web.Mvc;
-using Homebank.Entities;
+﻿using Homebank.Entities;
 using Homebank.Repositories;
 using Homebank.Web.Models;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Homebank.Web.Controllers
 {
@@ -57,8 +54,8 @@ namespace Homebank.Web.Controllers
 				    }
 			    }
 
-				prepareCategories(model);
-				prepareReferenceAccounts(model);
+				PrepareCategories(model);
+				PrepareReferenceAccounts(model);
 		    }
 		    else
 		    {
@@ -109,8 +106,8 @@ namespace Homebank.Web.Controllers
 				return RedirectToAction("Show", "Account", new {id, page = 1});
 			}
 
-			prepareCategories(model);
-			prepareReferenceAccounts(model);
+			PrepareCategories(model);
+			PrepareReferenceAccounts(model);
 
 			ViewBag.Header = "Add transaction";
 			return View("Edit", model);
@@ -122,7 +119,7 @@ namespace Homebank.Web.Controllers
 		    var a = _accountRepository.GetById(HomebankUser, account);
 		    var model = new TransactionModel();
 
-		    if (trans != null && account != null)
+		    if (trans != null && account > 0)
 		    {
 			    model.DataId = trans.Id;
 			    model.Account = a.Name;
@@ -137,8 +134,8 @@ namespace Homebank.Web.Controllers
 				    model.ReferenceAccountId = trans.Bookings.First(p => p.Account.Id != a.Id).Account.Id;
 			    }
 
-				prepareCategories(model);
-				prepareReferenceAccounts(model);
+				PrepareCategories(model);
+				PrepareReferenceAccounts(model);
 		    }
 
 		    ViewBag.Error = "Account or transaction not found!";
@@ -217,7 +214,7 @@ namespace Homebank.Web.Controllers
 	    }
 
 	    [NonAction]
-	    private void prepareCategories(TransactionModel model)
+	    private void PrepareCategories(TransactionModel model)
 	    {
 		    foreach (var category in _categoryRepository.GetAllByUser(HomebankUser, true))
 		    {
@@ -226,7 +223,7 @@ namespace Homebank.Web.Controllers
 	    }
 
 	    [NonAction]
-	    private void prepareReferenceAccounts(TransactionModel model)
+	    private void PrepareReferenceAccounts(TransactionModel model)
 	    {
 		    foreach (var account in _accountRepository.GetAllByUser(HomebankUser, true))
 		    {
