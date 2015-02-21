@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Homebank.Entities;
 
 namespace Homebank.Repositories
 {
@@ -11,23 +12,36 @@ namespace Homebank.Repositories
 		{
 		}
 
-		public IEnumerable<ReportingRecord> SearchTransactions(IEnumerable<int> categories, IEnumerable<int> accounts, DateTime from, DateTime until, ReportingType reportingType)
+		public IEnumerable<ReportingRecord> SearchTransactions(User user, IList<int> categories, IList<int> accounts, DateTime from, DateTime until, ReportingType reportingType)
 		{
-			return _databaseContext.Bookings.Where(p =>
-				accounts.Contains(p.Account.Id)
-				&& categories.Contains(p.Transaction.Category.Id)
-				&& reportingType == ReportingType.Earnings ? p.Amount > 0 : p.Amount < 0
-				&& p.Transaction.Date >= from
-				&& p.Transaction.Date >= until)
-				.Select(p => new ReportingRecord
-				{
-					Id = p.Id,
-					Account = p.Account.Id,
-					Category = p.Transaction.Category.Id,
-					Date = p.Transaction.Date,
-					Description = p.Transaction.Description,
-					Amount = p.Amount
-				})
+			var query = _databaseContext.Bookings.Where(p =>
+				p.Transaction.Date >= from
+				&& p.Transaction.Date <= until
+				&& p.Account.User.Id == user.Id);
+
+			if (!categories.Contains(0))
+			{
+				query = query.Where(p => categories.Contains(p.Transaction.Category.Id));
+			}
+
+			if (!accounts.Contains(0))
+			{
+				query = query.Where(p => accounts.Contains(p.Account.Id));
+			}
+
+			query = reportingType == ReportingType.Earnings ? query.Where(p => p.Amount > 0) : query.Where(p => p.Amount < 0);
+
+			return query.Select(p => new ReportingRecord
+			{
+				Id = p.Transaction.Id,
+				Account = p.Account.Id,
+				AccountName = p.Account.Name,
+				Category = p.Transaction.Category.Id,
+				CategoryName = p.Transaction.Category.Name,
+				Date = p.Transaction.Date,
+				Description = p.Transaction.Description,
+				Amount = reportingType == ReportingType.Earnings ? p.Amount : p.Amount * -1
+			})
 				.ToList();
 		}
 	}
@@ -42,7 +56,9 @@ namespace Homebank.Repositories
 	{
 		public int Id { get; set; }
 		public int Account { get; set; }
+		public string AccountName { get; set; }
 		public int Category { get; set; }
+		public string CategoryName { get; set; }
 		public DateTime Date { get; set; }
 		public string Description { get; set; }
 		public decimal Amount { get; set; }

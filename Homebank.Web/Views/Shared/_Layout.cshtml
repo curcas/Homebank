@@ -7,7 +7,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Homebank</title>
+		@Styles.Render("~/bundles/Content/themes/dark-hive/style")
 		@Styles.Render("~/bundles/styles")
+		@Scripts.Render("~/bundles/scripts")
 	</head>
 	<body>
 		<div class="navbar navbar-inverse navbar-static-top">
@@ -28,6 +30,7 @@
 							<li>@Html.ActionLink("Accounts", "List", "Account")</li>
 							<li>@Html.ActionLink("Categories", "List", "Category")</li>
 							<li>@Html.ActionLink("Templates", "List", "Template")</li>
+							<li>@Html.ActionLink("Reporting", "Index", "Reporting")</li>
 							@if (((List<Template>) ViewBag.Templates).Count > 0)
 							{
 								<li class="dropdown">
@@ -100,7 +103,7 @@
 			</footer>
 		</div>
 
-		@Scripts.Render("~/bundles/scripts")
+		
 		@RenderSection("scripts", false)
 	
 		<script type="text/javascript">
