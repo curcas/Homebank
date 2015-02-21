@@ -16,7 +16,7 @@ namespace Homebank.Web.Models
 		}
 
 		[Required]
-		public string Account { get; set; }
+		public string AccountName { get; set; }
 
 		[Required]
 		public int DataId { get; set; }

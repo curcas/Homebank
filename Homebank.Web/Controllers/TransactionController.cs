@@ -33,7 +33,7 @@ namespace Homebank.Web.Controllers
 
 		    if (account != null)
 		    {
-			    model.Account = account.Name;
+				model.AccountName = account.Name;
 			    model.AccountId = account.Id;
 			    model.Date = DateTime.Now;
 
@@ -122,7 +122,7 @@ namespace Homebank.Web.Controllers
 		    if (trans != null && account > 0)
 		    {
 			    model.DataId = trans.Id;
-			    model.Account = a.Name;
+				model.AccountName = a.Name;
 			    model.AccountId = a.Id;
 			    model.Amount = trans.Bookings.First(p => p.Account.Id == a.Id).Amount;
 			    model.CategoryId = trans.Category.Id;
