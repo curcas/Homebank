@@ -43,6 +43,7 @@ namespace Homebank.Web.Controllers
 		}
 
 		[HttpPost]
+		[ValidateAntiForgeryToken]
 		public ActionResult Index(ReportingModel model)
 		{
 			Highcharts chart = null;
@@ -63,7 +64,7 @@ namespace Homebank.Web.Controllers
 							AllowPointSelect = true,
 							DataLabels = new PlotOptionsPieDataLabels
 							{
-								Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) + '% (' + new Number(this.total).toLocaleString() + ')'; }"
+								Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) + '% (' + new Number(this.y).toLocaleString() + ')'; }"
 							}
 						}
 					}).SetTitle(new Title
@@ -71,7 +72,7 @@ namespace Homebank.Web.Controllers
 						Text = "Report"
 					}).SetTooltip(new Tooltip
 					{
-						Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +'% (' + new Number(this.total).toLocaleString() + ')'; }"
+						Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +'% (' + new Number(this.y).toLocaleString() + ')'; }"
 					}).SetSeries(new Series
 					{
 						Type = ChartTypes.Pie,
