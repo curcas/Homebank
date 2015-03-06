@@ -12,12 +12,17 @@ namespace Homebank.Repositories
 		{
 		}
 
-		public IEnumerable<ReportingRecord> SearchTransactions(User user, IList<int> categories, IList<int> accounts, DateTime from, DateTime until, ReportingType reportingType)
+		public IEnumerable<ReportingRecord> SearchTransactions(User user, IList<int> categories, IList<int> accounts, DateTime from, DateTime until, bool includeTransactionsToOtherAccounts, ReportingType reportingType)
 		{
 			var query = _databaseContext.Bookings.Where(p =>
 				p.Transaction.Date >= from
 				&& p.Transaction.Date <= until
 				&& p.Account.User.Id == user.Id);
+
+			if (!includeTransactionsToOtherAccounts)
+			{
+				query = query.Where(p => p.Transaction.Bookings.Count == 1);
+			}
 
 			if (!categories.Contains(0))
 			{

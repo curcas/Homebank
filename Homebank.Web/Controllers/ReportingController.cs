@@ -51,7 +51,7 @@ namespace Homebank.Web.Controllers
 
 			if (ModelState.IsValid)
 			{
-				transactions = _reportingRepository.SearchTransactions(HomebankUser, model.Category, model.Account, model.StartDate, model.EndDate, model.ReportingType);
+				transactions = _reportingRepository.SearchTransactions(HomebankUser, model.Category, model.Account, model.StartDate, model.EndDate, model.IncludeTransactionsToOtherAccounts, model.ReportingType);
 
 				chart = new Highcharts("report")
 					.InitChart(new Chart
@@ -64,7 +64,7 @@ namespace Homebank.Web.Controllers
 							AllowPointSelect = true,
 							DataLabels = new PlotOptionsPieDataLabels
 							{
-								Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) + '% (' + new Number(this.y).toLocaleString() + ')'; }"
+								Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) + '% (' +  new Number(this.y).toLocaleString(undefined, { minimumFractionDigits: 2 }); + ')'; }"
 							}
 						}
 					}).SetTitle(new Title
@@ -72,7 +72,7 @@ namespace Homebank.Web.Controllers
 						Text = "Report"
 					}).SetTooltip(new Tooltip
 					{
-						Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +'% (' + new Number(this.y).toLocaleString() + ')'; }"
+						Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +'% (' + new Number(this.y).toLocaleString(undefined, { minimumFractionDigits: 2 }); + ')'; }"
 					}).SetSeries(new Series
 					{
 						Type = ChartTypes.Pie,

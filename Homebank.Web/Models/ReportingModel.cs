@@ -39,6 +39,8 @@ namespace Homebank.Web.Models
 		[Required(ErrorMessage = "Please choose at least one category.")]
 		public List<int> Category { get; set; }
 
+		public bool IncludeTransactionsToOtherAccounts { get; set; }
+
 		public IEnumerable<ReportingRecord> Transactions { get; set; } 
 	}
 }
