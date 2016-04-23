@@ -7,6 +7,8 @@ let buildDir = "./build/"
 let testDir  = "./test/"
 let deployDir = "./deploy/"
 
+RestorePackages()
+
 // Targets
 Target "Clean" (fun _ ->
     CleanDirs [buildDir; testDir; deployDir]
