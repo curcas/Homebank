@@ -17,13 +17,13 @@ Target "Clean" (fun _ ->
 Target "BuildWeb" (fun _ ->
     !! "src/web/**/*.csproj"
       |> MSBuildRelease buildDir "Build"
-      |> Log "AppBuild-Output: "
+      |> Log "Output: "
 )
 
 Target "BuildTest" (fun _ ->
-    !! "src/test/**/*.csproj"
+    !! "src/tests/**/*.csproj"
       |> MSBuildDebug testDir "Build"
-      |> Log "TestBuild-Output: "
+      |> Log "Output: "
 )
 
 Target "Test" (fun _ ->

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers.Tests", "src\test\Homebank.Helpers.Tests\Homebank.Helpers.Tests.csproj", "{4A5E5CC2-A24E-451B-BD55-AA014E774013}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers.Tests", "src\tests\Homebank.Helpers.Tests\Homebank.Helpers.Tests.csproj", "{4A5E5CC2-A24E-451B-BD55-AA014E774013}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Entities", "src\web\Homebank.Entities\Homebank.Entities.csproj", "{DFBA38C9-22E5-4B91-892A-888E237D03A0}"
 EndProject
