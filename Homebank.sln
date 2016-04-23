@@ -1,19 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Web", "Homebank.Web\Homebank.Web.csproj", "{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers.Tests", "src\test\Homebank.Helpers.Tests\Homebank.Helpers.Tests.csproj", "{4A5E5CC2-A24E-451B-BD55-AA014E774013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Entities", "Homebank.Entities\Homebank.Entities.csproj", "{DFBA38C9-22E5-4B91-892A-888E237D03A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Entities", "src\web\Homebank.Entities\Homebank.Entities.csproj", "{DFBA38C9-22E5-4B91-892A-888E237D03A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Repositories", "Homebank.Repositories\Homebank.Repositories.csproj", "{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers", "src\web\Homebank.Helpers\Homebank.Helpers.csproj", "{08616C78-4463-4F29-A6F2-01E1E3898E7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Migrations", "Homebank.Migrations\Homebank.Migrations.csproj", "{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Migrations", "src\web\Homebank.Migrations\Homebank.Migrations.csproj", "{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers", "Homebank.Helpers\Homebank.Helpers.csproj", "{08616C78-4463-4F29-A6F2-01E1E3898E7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Repositories", "src\web\Homebank.Repositories\Homebank.Repositories.csproj", "{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Helpers.Tests", "Homebank.Helpers.Tests\Homebank.Helpers.Tests.csproj", "{4A5E5CC2-A24E-451B-BD55-AA014E774013}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homebank.Web", "src\web\Homebank.Web\Homebank.Web.csproj", "{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,30 +21,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A5E5CC2-A24E-451B-BD55-AA014E774013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A5E5CC2-A24E-451B-BD55-AA014E774013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A5E5CC2-A24E-451B-BD55-AA014E774013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A5E5CC2-A24E-451B-BD55-AA014E774013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBA38C9-22E5-4B91-892A-888E237D03A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08616C78-4463-4F29-A6F2-01E1E3898E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B7D14B-EDAA-4333-8AF5-4E36F341A23D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCB4D2BA-E491-4F0B-BCDA-9D131474E309}</ProjectGuid>
+    <ProjectGuid>{A616ABB8-DB9C-42FD-9D98-2FFDA9F7BC89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Homebank.Migrations</RootNamespace>
-    <AssemblyName>Homebank.Migrations</AssemblyName>
+    <RootNamespace>Homebank.Repositories</RootNamespace>
+    <AssemblyName>Homebank.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,11 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentMigrator, Version=1.4.0.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\FluentMigrator.1.4.0.0\lib\40\FluentMigrator.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,17 +48,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migration_001.cs" />
-    <Compile Include="Migration_002.cs" />
-    <Compile Include="Migration_003.cs" />
-    <Compile Include="Migration_005.cs" />
-    <Compile Include="Migration_004.cs" />
-    <Compile Include="Migration_008.cs" />
-    <Compile Include="Migration_007.cs" />
-    <Compile Include="Migration_006.cs" />
+    <Compile Include="BookingRepository.cs" />
+    <Compile Include="Mappings\BookingMapping.cs" />
+    <Compile Include="ReportingRepository.cs" />
+    <Compile Include="TemplateRepository.cs" />
+    <Compile Include="Mappings\TemplateMapping.cs" />
+    <Compile Include="TransactionRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="AccountRepository.cs" />
+    <Compile Include="CategoryRepository.cs" />
+    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="Mappings\TransactionMapping.cs" />
+    <Compile Include="Mappings\AccountMapping.cs" />
+    <Compile Include="Mappings\CategoryMapping.cs" />
+    <Compile Include="Mappings\UserMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Homebank.Entities\Homebank.Entities.csproj">
+      <Project>{dfba38c9-22e5-4b91-892a-888e237d03a0}</Project>
+      <Name>Homebank.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
