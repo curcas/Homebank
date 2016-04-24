@@ -16,7 +16,7 @@ Target "Clean" (fun _ ->
 
 Target "BuildWeb" (fun _ ->
     !! "src/web/**/*.csproj"
-      |> MSBuildRelease buildDir "Build"
+      |> MSBuild buildDir "Build" [ "Configuration", "Release"; "RunOctoPack", "true" ]
       |> Log "Output: "
 )
 
@@ -34,9 +34,9 @@ Target "Test" (fun _ ->
           })
 )
 
-Target "Package" (fun _ ->
-    !! (buildDir + "_PublishedWebsites/Homebank.Web/**/*.*")
-        |> Zip (buildDir + "_PublishedWebsites/Homebank.Web") (deployDir + "Homebank.Web.zip")
+Target "Deploy" (fun _ ->
+    !! (buildDir + "*.nupkg")
+    |> Seq.iter (fun x -> MoveFile deployDir x)
 )
 
 // Dependencies
@@ -44,7 +44,7 @@ Target "Package" (fun _ ->
   ==> "BuildWeb"
   ==> "BuildTest"
   ==> "Test"
-  ==> "Package"
+  ==> "Deploy"
 
 // start build
-RunTargetOrDefault "Package"
+RunTargetOrDefault "Deploy"
