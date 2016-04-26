@@ -51,15 +51,9 @@ namespace Homebank.Web.Controllers
 
 		    foreach (var account in accounts)
 		    {
-			    templateList.Add(new Template
-			    {
-				    IsTitle = true,
-					Name = account.Name
-			    });
-
 				templateList.Add(new Template
 				{
-					Name = "Default",
+					Name = account.Name,
 					Link = Url.Action("Add", "Transaction", new { id = account.Id })
 				});
 

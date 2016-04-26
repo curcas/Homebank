@@ -38,17 +38,11 @@
 									<ul class="dropdown-menu">
 										@foreach (var template in (List<Template>) ViewBag.Templates)
 										{
-											if (template.IsTitle)
-											{
-												<li class="dropdown-header">@template.Name</li>
-											}
-
 											if (template.IsSeperator)
 											{
 												<li class="divider"></li>
 											}
-
-											if (!template.IsSeperator && !template.IsTitle)
+											else
 											{
 												<li>
 													<a href="@template.Link">@template.Name</a>

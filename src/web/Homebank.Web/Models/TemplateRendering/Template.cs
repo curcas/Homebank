@@ -9,7 +9,6 @@ namespace Homebank.Web.Models.TemplateRendering
 	{
 		public string Name { get; set; }
 		public string Link { get; set; }
-		public bool IsTitle { get; set; }
 		public bool IsSeperator { get; set; }
 	}
 }
