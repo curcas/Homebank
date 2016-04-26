@@ -3,9 +3,17 @@ open Fake
 open Fake.Testing
 
 // Properties
-let buildDir = "./build/"
-let testDir  = "./test/"
-let deployDir = "./deploy/"
+let buildDir = "build"
+let testDir  = "test"
+let deployDir = "deploy"
+
+// Helpers
+let GetEnvironmentVariableOrDefault (name : string) (defaultValue : string) = (
+    let result = environVar name
+    if result <> null then result else defaultValue
+)
+
+let GetBuildNumber = GetEnvironmentVariableOrDefault "BUILD_NUMBER" "0"
 
 RestorePackages()
 
@@ -15,28 +23,39 @@ Target "Clean" (fun _ ->
 )
 
 Target "BuildWeb" (fun _ ->
-    !! "src/web/**/*.csproj"
-      |> MSBuild buildDir "Build" [ "Configuration", "Release"; "RunOctoPack", "true" ]
+    !! ("src" @@ "web" @@ "**" @@ "*.csproj")
+      |> MSBuild buildDir "Build" [ "Configuration", "Release" ]
       |> Log "Output: "
 )
 
 Target "BuildTest" (fun _ ->
-    !! "src/tests/**/*.csproj"
+    !! ("src" @@ "tests" @@ "**" @@ "*.csproj")
       |> MSBuildDebug testDir "Build"
       |> Log "Output: "
 )
 
 Target "Test" (fun _ ->
-    !! (testDir + "/Homebank.*.Tests.dll")
+    !! (testDir @@ "Homebank.*.Tests.dll")
       |> xUnit2 (fun p ->
           {p with HtmlOutputPath = Some(testDir @@ "TestResults.html") 
-                  ToolPath = "packages/xunit.runner.console/tools/xunit.console.exe"
+                  ToolPath = "packages" @@ "xunit.runner.console" @@ "tools" @@ "xunit.console.exe"
           })
 )
 
 Target "Deploy" (fun _ ->
-    !! (buildDir + "*.nupkg")
-    |> Seq.iter (fun x -> MoveFile deployDir x)
+    NuGet (fun p -> 
+        {p with
+            Authors = ["Curdin Caspar"]
+            Project = "Homebank"
+            Description = "Homebank Release"
+            Version = "2016." + GetBuildNumber
+            OutputPath = deployDir
+            WorkingDir = "."
+            Files = [
+                    (buildDir @@ "_PublishedWebsites" @@ "**" @@ "*.*", None, None)
+            ]
+        })
+        "template.nuspec"
 )
 
 // Dependencies
