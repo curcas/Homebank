@@ -36,12 +36,13 @@ namespace Homebank.Web.Controllers
 				page = 1;
 			}
 
+            int totalTransactions;
             var model = new AccountShowModel
 			{
 				Account = account,
 				CurrentBalance = _accountRepository.GetCurrentBalance(id),
 				FutureBalance = _accountRepository.GetFutureBalance(id),
-				Transactions = _transactionRepository.GetByAccount(id, page, out int totalTransactions),
+				Transactions = _transactionRepository.GetByAccount(id, page, out totalTransactions),
 				TotalTransactions = totalTransactions,
 				CurrentPage = page
 			};
