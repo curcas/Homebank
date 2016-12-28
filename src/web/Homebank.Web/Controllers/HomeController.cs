@@ -31,10 +31,12 @@ namespace Homebank.Web.Controllers
 		{
 			var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
 
-			var model = new AccountOverviewModel();
-			model.Accounts = new List<AccountModel>();
+            var model = new AccountOverviewModel()
+            {
+                Accounts = new List<AccountModel>()
+            };
 
-			foreach (var account in accounts)
+            foreach (var account in accounts)
 			{
 				var a = new AccountModel
 				{

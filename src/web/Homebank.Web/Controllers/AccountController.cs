@@ -36,13 +36,12 @@ namespace Homebank.Web.Controllers
 				page = 1;
 			}
 
-			int totalTransactions;
-			var model = new AccountShowModel
+            var model = new AccountShowModel
 			{
 				Account = account,
 				CurrentBalance = _accountRepository.GetCurrentBalance(id),
 				FutureBalance = _accountRepository.GetFutureBalance(id),
-				Transactions = _transactionRepository.GetByAccount(id, page, out totalTransactions),
+				Transactions = _transactionRepository.GetByAccount(id, page, out int totalTransactions),
 				TotalTransactions = totalTransactions,
 				CurrentPage = page
 			};
@@ -62,7 +61,7 @@ namespace Homebank.Web.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				var account = new Account {Name = model.Name, User = HomebankUser, Active = model.Active};
+				var account = new Account {Name = model.Name, User = HomebankUser, Active = model.Active, ControlDate = model.ControlDate};
 
 				_accountRepository.Save(account);
 				_accountRepository.SaveChanges();
@@ -92,7 +91,8 @@ namespace Homebank.Web.Controllers
 			{
 				Id = account.Id,
 				Name = account.Name,
-				Active = account.Active
+				Active = account.Active,
+                ControlDate = account.ControlDate
 			};
 
 			ViewBag.Header = "Edit account";
@@ -114,6 +114,7 @@ namespace Homebank.Web.Controllers
 
 				account.Name = model.Name;
 				account.Active = model.Active;
+                account.ControlDate = model.ControlDate;
 
 				_accountRepository.Save(account);
 				_accountRepository.SaveChanges();

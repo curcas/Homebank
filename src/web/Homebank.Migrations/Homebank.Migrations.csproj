@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Homebank.Migrations</RootNamespace>
     <AssemblyName>Homebank.Migrations</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,7 @@
     <Compile Include="Migration_003.cs" />
     <Compile Include="Migration_005.cs" />
     <Compile Include="Migration_004.cs" />
+    <Compile Include="Migration_009.cs" />
     <Compile Include="Migration_008.cs" />
     <Compile Include="Migration_007.cs" />
     <Compile Include="Migration_006.cs" />

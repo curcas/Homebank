@@ -1,4 +1,5 @@
 ﻿using Homebank.Web.Attributes;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Homebank.Web.Models
@@ -17,5 +18,10 @@ namespace Homebank.Web.Models
 		public decimal CurrentBalance { get; set; }
 
 		public decimal FutureBalance { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DateRange(ErrorMessage = "Date must be between 1900-01-01 and 2100-01-01")]
+        [DataType(DataType.Text)]
+        public DateTime? ControlDate { get; set; }
 	}
 }

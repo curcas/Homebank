@@ -38,13 +38,13 @@ namespace Homebank.Web.Controllers
 		    if (!string.IsNullOrEmpty(User.Identity.Name))
 		    {
 			    filterContext.Controller.ViewBag.Username = HomebankUser.Name;
-				getTemplates();
+				GetTemplates();
 		    }
 
 			base.OnActionExecuted(filterContext);
 	    }
 
-	    private void getTemplates()
+	    private void GetTemplates()
 	    {
 		    IList<Template> templateList = new List<Template>();
 		    var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
