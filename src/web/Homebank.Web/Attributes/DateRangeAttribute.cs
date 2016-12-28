@@ -4,9 +4,11 @@ namespace Homebank.Web.Attributes
 {
 	public class DateRangeAttribute : ValidationAttribute
 	{
-		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        public bool Nullable { get; set; }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-            if(value is DateTime? && value == null)
+            if(Nullable && value == null)
             {
                 return null;
             }
