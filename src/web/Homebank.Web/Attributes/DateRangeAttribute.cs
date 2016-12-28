@@ -6,7 +6,12 @@ namespace Homebank.Web.Attributes
 	{
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-			if (value is DateTime)
+            if(value is DateTime? && value == null)
+            {
+                return null;
+            }
+
+			if (value is DateTime || value is DateTime?)
 			{
 				var date = (DateTime) value;
 
