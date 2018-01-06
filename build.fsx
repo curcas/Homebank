@@ -38,7 +38,7 @@ Target "Test" (fun _ ->
     !! (testDir @@ "Homebank.*.Tests.dll")
       |> xUnit2 (fun p ->
           {p with HtmlOutputPath = Some(testDir @@ "TestResults.html") 
-                  ToolPath = "packages" @@ "xunit.runner.console" @@ "tools" @@ "xunit.console.exe"
+                  ToolPath = "packages" @@ "xunit.runner.console" @@ "tools" @@ "net452" @@ "xunit.console.exe"
           })
 )
 
