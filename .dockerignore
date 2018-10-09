@@ -1,5 +1,7 @@
 #Web
 src/Homebank.Web/elm-stuff/*
+src/Homebank.Web/node-modules/*
+src/Homebank.Web/dist/*
 
 #Api
 src/Homebank.Api/bin/*

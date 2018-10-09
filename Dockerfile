@@ -21,22 +21,25 @@ RUN dotnet publish Homebank.Api.csproj -c Release -o /app
 #################################  elm build  #################################
 
 # elm build
-FROM wunsh/alpine-elm:0.19-alpine3.8 AS web
+FROM node:10.11.0 AS web
+
+#RUN npm install -g elm@0.19.0-bugfix2
+RUN npm install -g yarn@1.10.1
 
 # Build
 WORKDIR /src
 COPY src/Homebank.Web/ .
-RUN elm make src/Main.elm --output=homebank.js
+RUN yarn install && yarn build
 # End build
 
 ################################# final build #################################
 FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine3.7 AS final
+LABEL maintainer Curdin Caspar <curdin.caspar@gmail.com>
 
 WORKDIR /app
 EXPOSE 80
 
 COPY --from=api /app .
-COPY --from=web /src/index.html ./wwwroot/
-COPY --from=web /src/homebank.js ./wwwroot/
+COPY --from=web /src/dist ./wwwroot/
 
 ENTRYPOINT ["dotnet", "Homebank.Api.dll"]

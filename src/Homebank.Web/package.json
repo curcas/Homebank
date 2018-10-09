@@ -1,0 +1,24 @@
+{
+  "name": "homebank-web",
+  "version": "2.0.0",
+  "description": "The web ui for Homebank",
+  "main": "index.js",
+  "repository": "https://github.com/curcas/Homebank",
+  "author": "Curdin Caspar",
+  "license": "MIT",
+  "dependencies": {
+    "css-loader": "^1.0.0",
+    "elm-webpack-loader": "^5.0.0",
+    "file-loader": "^2.0.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.1",
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.2"
+  }
+}
