@@ -26,7 +26,7 @@ FROM wunsh/alpine-elm:0.19-alpine3.8 AS web
 # Build
 WORKDIR /src
 COPY src/Homebank.Web/ .
-RUN elm make src/Main.elm
+RUN elm make src/Main.elm --output=homebank.js
 # End build
 
 ################################# final build #################################
@@ -37,5 +37,6 @@ EXPOSE 80
 
 COPY --from=api /app .
 COPY --from=web /src/index.html ./wwwroot/
+COPY --from=web /src/homebank.js ./wwwroot/
 
 ENTRYPOINT ["dotnet", "Homebank.Api.dll"]
