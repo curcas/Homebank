@@ -1,0 +1,6 @@
+#Web
+src/Homebank.Web/elm-stuff/*
+
+#Api
+src/Homebank.Api/bin/*
+src/Homebank.Api/obj/*

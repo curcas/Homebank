@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  homebank:
+    build: .
+    ports:
+      - "80:80"
