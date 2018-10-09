@@ -7,7 +7,7 @@ FROM microsoft/dotnet:2.1-sdk-alpine3.7 AS api
 WORKDIR /src
 COPY src/Homebank.Api/Homebank.Api.csproj .
 RUN dotnet restore Homebank.Api.csproj
-# End restore
+# End restore packages
 
 # Build
 COPY src/Homebank.Api/ .
@@ -23,8 +23,9 @@ RUN dotnet publish Homebank.Api.csproj -c Release -o /app
 # elm build
 FROM node:10.11.0 AS web
 
-#RUN npm install -g elm@0.19.0-bugfix2
+# Build tools
 RUN npm install -g yarn@1.10.1
+# End build tools
 
 # Build
 WORKDIR /src

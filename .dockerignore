@@ -1,8 +1,12 @@
-#Web
-src/Homebank.Web/elm-stuff/*
-src/Homebank.Web/node-modules/*
-src/Homebank.Web/dist/*
+# Elm
+src/Homebank.Web/elm-stuff/
 
-#Api
-src/Homebank.Api/bin/*
-src/Homebank.Api/obj/*
+# Node.js
+src/Homebank.Web/node_modules/
+
+# webpack
+src/Homebank.Web/dist/
+
+# .NET Core
+src/Homebank.Api/bin/
+src/Homebank.Api/obj/

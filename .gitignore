@@ -333,5 +333,8 @@ ASALocalRun/
 # Local History for Visual Studio
 .localhistory/
 
-#Homebank
+# Elm
+elm-stuff/
+
+# webpack
 dist/

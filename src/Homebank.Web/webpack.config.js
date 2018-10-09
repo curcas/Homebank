@@ -1,4 +1,6 @@
 module.exports = {
+  mode: "production",
+
   module: {
     rules: [{
       test: /\.html$/,
@@ -8,7 +10,10 @@ module.exports = {
     {
       test: /\.elm$/,
       exclude: [/elm-stuff/, /node_modules/],
-      loader: "elm-webpack-loader"
+      loader: "elm-webpack-loader",
+      options: {
+        optimize: true
+      }
     }
     ]
   }
