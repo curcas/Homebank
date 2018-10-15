@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  homebank:
+    build: ../../
+    ports:
+      - "80:80"
+
+  generator:
+    image: "openapitools/openapi-generator-cli:v3.3.1"
+    depends_on:
+        - homebank
+    links:
+        - homebank
+    command: "generate -i http://homebank:80/swagger/v1/swagger.json -g elm -o /generated"
+    volumes:
+        - ../../src/Homebank.Web:/generated
