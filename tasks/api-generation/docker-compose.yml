@@ -12,6 +12,6 @@ services:
         - homebank
     links:
         - homebank
-    command: "generate -i http://homebank:80/swagger/v1/swagger.json -g elm -o /generated"
+    command: "generate -i http://homebank/swagger/v1/swagger.json -g elm -o /generated"
     volumes:
-        - ../../src/Homebank.Web:/generated
+        - ../../src/Homebank.Web/src/swagger:/generated

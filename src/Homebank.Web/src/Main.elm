@@ -1,23 +1,66 @@
+module Main exposing (Model, Msg(..), fetchUsers, init, main, subscriptions, update, view)
+
 import Browser
-import Html exposing (Html, button, div, text)
+import Data.User exposing (User)
+import Html exposing (Html, button, div, li, text, ul)
 import Html.Events exposing (onClick)
+import Http exposing (..)
+import Request.Account exposing (..)
+
 
 main =
-  Browser.sandbox { init = 0, update = update, view = view }
+    Browser.element
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        }
 
-type Msg = Increment | Decrement
 
+type alias Model =
+    List User
+
+
+type Msg
+    = Load
+    | OnFetchAccounts (Result Http.Error (List User))
+
+
+init : () -> ( Model, Cmd Msg )
+init _ =
+    ( []
+    , fetchUsers
+    )
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-  case msg of
-    Increment ->
-      model + 2
+    case msg of
+        Load ->
+            ( [], fetchUsers )
 
-    Decrement ->
-      model - 2
+        OnFetchAccounts (Ok data) ->
+            ( data
+            , Cmd.none
+            )
 
+        OnFetchAccounts (Err _) ->
+            ( model, Cmd.none )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+view : Model -> Html Msg
 view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    ]
+    div []
+        [ button [ onClick Load ] [ text "Load data" ]
+        , ul [] (List.map (\u -> li [] [ text u.name ]) model)
+        ]
+
+
+fetchUsers : Cmd Msg
+fetchUsers =
+    apiAccountGet |> Http.send OnFetchAccounts
