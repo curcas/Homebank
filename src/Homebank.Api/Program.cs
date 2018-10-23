@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,15 +10,28 @@ using Microsoft.Extensions.Logging;
 
 namespace Homebank.Api
 {
-    public class Program
+    /// <summary>
+    /// The programm.
+    /// </summary>
+    public static class Program
     {
+        /// <summary>
+        /// Start the WebHost.
+        /// </summary>
+        /// <param name="args">The console arguments.</param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        /// <summary>
+        /// Configure the WebHost.
+        /// </summary>
+        /// <param name="args">The console arguments.</param>
+        /// <returns>The WebHostBuilder.</returns>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+        }
     }
 }
