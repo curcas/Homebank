@@ -21,17 +21,23 @@ namespace Homebank.Api
         /// <param name="args">The console arguments.</param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args).Run();
         }
 
         /// <summary>
         /// Configure the WebHost.
         /// </summary>
         /// <param name="args">The console arguments.</param>
-        /// <returns>The WebHostBuilder.</returns>
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        /// <returns>The WebHost.</returns>
+        public static IWebHost CreateWebHostBuilder(string[] args)
         {
-            return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+            return WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((builderContext, config) =>
+            {
+                config.AddEnvironmentVariables();
+            })
+            .UseStartup<Startup>()
+            .Build();
         }
     }
 }

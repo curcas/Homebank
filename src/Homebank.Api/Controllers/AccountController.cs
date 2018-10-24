@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Homebank.Api.Database;
 using Homebank.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +12,17 @@ namespace Homebank.Api.Controllers
     [Route("api/[controller]")]
     public class AccountController
     {
+        private readonly HomebankContext homebankContext;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController" /> class.
+        /// </summary>
+        /// <param name="homebankContext">The DB context for Homebank.</param>
+        public AccountController(HomebankContext homebankContext)
+        {
+            this.homebankContext = homebankContext;
+        }
+
         /// <summary>
         /// Returns a list of all existing users.
         /// </summary>
@@ -17,11 +30,9 @@ namespace Homebank.Api.Controllers
         [HttpGet]
         public ActionResult<IList<User>> GetAll()
         {
-            return new List<User>
-            {
-                new User { Id = 1, Name = "User 1" },
-                new User { Id = 2, Name = "User 2" },
-            };
+            return homebankContext.Users
+                .Select(u => new User { Id = u.Id, Name = u.Name })
+                .ToList();
         }
     }
 }

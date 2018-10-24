@@ -1,0 +1,15 @@
+DROP DATABASE IF EXISTS Homebank
+CREATE DATABASE Homebank
+
+GO
+
+CREATE TABLE dbo.Users
+(
+    Id INT PRIMARY KEY NOT NULL,
+    Name VARCHAR(50) NOT NULL
+)
+
+INSERT INTO dbo.Users
+    (Id, Name)
+VALUES
+    (1, 'Test')
