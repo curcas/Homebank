@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
+using FluentMigrator.Runner;
 using Homebank.Api.Database;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -59,6 +61,11 @@ namespace Homebank.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                UpdateDatabase(scope.ServiceProvider);
+            }
         }
 
         /// <summary>
@@ -73,10 +80,20 @@ namespace Homebank.Api
             var user = configuration["DATABASE_USER"];
             var password = configuration["DATABASE_PASSWORD"];
 
+            var conenctionString = $"Server={server},{port};Database={databaseName};User Id={user};Password={password};";
+
             services.AddDbContext<HomebankContext>(options =>
             {
                 options.UseSqlServer($"Server={server},{port};Database={databaseName};User Id={user};Password={password};");
             });
+
+            services.AddFluentMigratorCore()
+                .ConfigureRunner(builder =>
+                {
+                    builder.AddSqlServer()
+                    .WithGlobalConnectionString(conenctionString)
+                    .ScanIn(typeof(HomebankContext).Assembly).For.Migrations();
+                });
 
             services.AddMvc();
 
@@ -89,6 +106,16 @@ namespace Homebank.Api
                 c.SwaggerDoc("v1", new Info { Title = "Homebank API", Version = "v1" });
                 c.IncludeXmlComments(commentsFile);
             });
+        }
+
+        private static void UpdateDatabase(IServiceProvider serviceProvider)
+        {
+            // Workaround for the DB creation.
+            // Move this to a migration page where the user can click to migrate (also solves concurrency problems).
+            Thread.Sleep(TimeSpan.FromSeconds(10));
+
+            var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
+            runner.MigrateUp();
         }
     }
 }
