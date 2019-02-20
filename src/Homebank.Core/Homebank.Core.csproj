@@ -63,6 +63,7 @@
     <Compile Include="Migrations\Migration_006.cs" />
     <Compile Include="Migrations\Migration_007.cs" />
     <Compile Include="Migrations\Migration_008.cs" />
+    <Compile Include="Migrations\Migration_010.cs" />
     <Compile Include="Migrations\Migration_009.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
