@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Homebank.Repositories;
+using Homebank.Core.Repositories;
 using Homebank.Web.Models;
-using Homebank.Helpers;
+using Homebank.Core.Helpers;
 
 namespace Homebank.Web.Controllers
 {

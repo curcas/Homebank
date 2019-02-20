@@ -1,4 +1,4 @@
-﻿using Homebank.Repositories;
+﻿using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Homebank.Entities;
-using Homebank.Repositories;
+using Homebank.Core.Entities;
+using Homebank.Core.Repositories;
 using System.Web.Mvc;
 using Template = Homebank.Web.Models.TemplateRendering.Template;
 

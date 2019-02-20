@@ -2,7 +2,7 @@
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
-using Homebank.Migrations;
+using Homebank.Core.Migrations;
 using System;
 using System.Collections.Generic;
 using System.Linq;

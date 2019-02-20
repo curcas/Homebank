@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Homebank.Repositories;
+using Homebank.Core.Repositories;
 using Homebank.Web.App_Start;
 using System;
 using System.Collections.Generic;

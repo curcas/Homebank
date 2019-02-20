@@ -6,8 +6,8 @@ using DotNet.Highcharts;
 using DotNet.Highcharts.Enums;
 using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;
-using Homebank.Entities;
-using Homebank.Repositories;
+using Homebank.Core.Entities;
+using Homebank.Core.Repositories;
 using Homebank.Web.Models;
 
 namespace Homebank.Web.Controllers

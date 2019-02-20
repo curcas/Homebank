@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Homebank.Entities;
-using Homebank.Repositories;
+using Homebank.Core.Entities;
+using Homebank.Core.Repositories;
 using Homebank.Web.Models;
 
 namespace Homebank.Web.Controllers

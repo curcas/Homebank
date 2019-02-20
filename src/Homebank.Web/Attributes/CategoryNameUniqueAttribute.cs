@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using Homebank.Repositories;
+using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
 
 namespace Homebank.Web.Attributes

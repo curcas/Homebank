@@ -1,5 +1,5 @@
-﻿using Homebank.Entities;
-using Homebank.Repositories;
+﻿using Homebank.Core.Entities;
+using Homebank.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

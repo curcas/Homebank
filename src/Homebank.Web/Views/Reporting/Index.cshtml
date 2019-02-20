@@ -40,7 +40,7 @@
 			<div class="form-group">
 				@Html.LabelFor(m => m.ReportingType, "Show", new { @class = "col-md-2 col-sm-2 control-label" })
 				<div class="col-md-10 col-sm-10">
-					@Html.DropDownListFor(m => m.ReportingType, new SelectList(Enum.GetValues(typeof(Homebank.Repositories.ReportingType))), new { @class = "form-control" })
+					@Html.DropDownListFor(m => m.ReportingType, new SelectList(Enum.GetValues(typeof(Homebank.Core.Repositories.ReportingType))), new { @class = "form-control" })
 					@Html.ValidationMessageFor(m => m.ReportingType, "", new { @class = "help-block text-danger" })
 				</div>
 			</div>

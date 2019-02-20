@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DotNet.Highcharts;
-using Homebank.Repositories;
+using Homebank.Core.Repositories;
 using Homebank.Web.Attributes;
 
 namespace Homebank.Web.Models
