@@ -1,8 +1,0 @@
-﻿@if (ViewContext.HttpContext.GetOverriddenBrowser().IsMobileDevice)
-{
-	@Html.ActionLink("Desktop view", "SwitchView", "ViewSwitcher", new {mobile = false, returnUrl = Request.Url.PathAndQuery}, new {rel = "external"})
-}
-else
-{
-	@Html.ActionLink("Mobile view", "SwitchView", "ViewSwitcher", new {mobile = true, returnUrl = Request.Url.PathAndQuery}, new {rel = "external"})
-}

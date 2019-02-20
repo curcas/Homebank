@@ -10,7 +10,6 @@ namespace Homebank.Web
 		{
 			BundleTable.EnableOptimizations = false;
 
-
 			bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
 				"~/Scripts/jquery-{version}.js",
 				"~/Scripts/jquery-ui-{version}.js",
@@ -26,15 +25,6 @@ namespace Homebank.Web
 				"~/Content/bootstrap.css",
 				"~/Content/site.css",
 				"~/Content/css/select2.css"));
-
-			bundles.Add(new ScriptBundle("~/bundles/mobile/scripts").Include(
-				"~/Scripts/jquery-{version}.js",
-				"~/Scripts/jquery.mobile-{version}.js",
-				"~/Scripts/jquery.mmenu.min.all.js"));
-
-			bundles.Add(new StyleBundle("~/bundles/mobile/styles").Include(
-				"~/Content/jquery.mobile-{version}.css",
-				"~/Content/jquery.mmenu.all.css"));
 		}
 	}
 }
