@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\xunit.core\build\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core\build\xunit.core.props')" Label="Paket" />
+  <Import Project="..\..\packages\xunit.core\build\xunit.core.props" Condition="Exists('..\..\packages\xunit.core\build\xunit.core.props')" Label="Paket" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -53,7 +53,7 @@
     <Compile Include="StringHelpersTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\web\Homebank.Helpers\Homebank.Helpers.csproj">
+    <ProjectReference Include="..\..\src\Homebank.Helpers\Homebank.Helpers.csproj">
       <Project>{08616c78-4463-4f29-a6f2-01e1e3898e7d}</Project>
       <Name>Homebank.Helpers</Name>
     </ProjectReference>
@@ -92,7 +92,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="xunit.abstractions">
-          <HintPath>..\..\..\packages\xunit.abstractions\lib\net35\xunit.abstractions.dll</HintPath>
+          <HintPath>..\..\packages\xunit.abstractions\lib\net35\xunit.abstractions.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -100,7 +100,7 @@
     </When>
   </Choose>
   <ItemGroup>
-    <Analyzer Include="..\..\..\packages\xunit.analyzers\analyzers\dotnet\cs\xunit.analyzers.dll">
+    <Analyzer Include="..\..\packages\xunit.analyzers\analyzers\dotnet\cs\xunit.analyzers.dll">
       <Paket>True</Paket>
     </Analyzer>
   </ItemGroup>
@@ -108,7 +108,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="xunit.assert">
-          <HintPath>..\..\..\packages\xunit.assert\lib\netstandard1.1\xunit.assert.dll</HintPath>
+          <HintPath>..\..\packages\xunit.assert\lib\netstandard1.1\xunit.assert.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -119,7 +119,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="xunit.core">
-          <HintPath>..\..\..\packages\xunit.extensibility.core\lib\net452\xunit.core.dll</HintPath>
+          <HintPath>..\..\packages\xunit.extensibility.core\lib\net452\xunit.core.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -130,12 +130,12 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="xunit.execution.desktop">
-          <HintPath>..\..\..\packages\xunit.extensibility.execution\lib\net452\xunit.execution.desktop.dll</HintPath>
+          <HintPath>..\..\packages\xunit.extensibility.execution\lib\net452\xunit.execution.desktop.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\..\packages\xunit.core\build\xunit.core.targets" Condition="Exists('..\..\..\packages\xunit.core\build\xunit.core.targets')" Label="Paket" />
+  <Import Project="..\..\packages\xunit.core\build\xunit.core.targets" Condition="Exists('..\..\packages\xunit.core\build\xunit.core.targets')" Label="Paket" />
 </Project>

@@ -821,7 +821,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="Antlr3.Runtime">
-          <HintPath>..\..\..\packages\Antlr\lib\Antlr3.Runtime.dll</HintPath>
+          <HintPath>..\..\packages\Antlr\lib\Antlr3.Runtime.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -832,7 +832,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="Autofac">
-          <HintPath>..\..\..\packages\Autofac\lib\net45\Autofac.dll</HintPath>
+          <HintPath>..\..\packages\Autofac\lib\net45\Autofac.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -843,7 +843,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="Autofac.Integration.Mvc">
-          <HintPath>..\..\..\packages\Autofac.Mvc5\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+          <HintPath>..\..\packages\Autofac.Mvc5\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -854,7 +854,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="DotNet.Highcharts">
-          <HintPath>..\..\..\packages\DotNet.Highcharts\lib\DotNet.Highcharts.dll</HintPath>
+          <HintPath>..\..\packages\DotNet.Highcharts\lib\DotNet.Highcharts.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -865,12 +865,12 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="EntityFramework">
-          <HintPath>..\..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
+          <HintPath>..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\..\..\packages\EntityFramework\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+          <HintPath>..\..\packages\EntityFramework\lib\net45\EntityFramework.SqlServer.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -881,7 +881,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="FluentMigrator">
-          <HintPath>..\..\..\packages\FluentMigrator\lib\40\FluentMigrator.dll</HintPath>
+          <HintPath>..\..\packages\FluentMigrator\lib\40\FluentMigrator.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -892,7 +892,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="FluentMigrator.Runner">
-          <HintPath>..\..\..\packages\FluentMigrator.Runner\lib\40\FluentMigrator.Runner.dll</HintPath>
+          <HintPath>..\..\packages\FluentMigrator.Runner\lib\40\FluentMigrator.Runner.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -903,7 +903,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="System.Web.Mvc">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc\lib\net45\System.Web.Mvc.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.Mvc\lib\net45\System.Web.Mvc.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -914,7 +914,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="System.Web.Razor">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.Razor\lib\net45\System.Web.Razor.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.Razor\lib\net45\System.Web.Razor.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -925,7 +925,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="System.Web.Optimization">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization\lib\net40\System.Web.Optimization.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization\lib\net40\System.Web.Optimization.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -936,22 +936,22 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="System.Web.Helpers">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.Helpers.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.Helpers.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="System.Web.WebPages">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="System.Web.WebPages.Deployment">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
         <Reference Include="System.Web.WebPages.Razor">
-          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -962,7 +962,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="Microsoft.Web.Infrastructure">
-          <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+          <HintPath>..\..\packages\Microsoft.Web.Infrastructure\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -973,7 +973,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
-          <HintPath>..\..\..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <HintPath>..\..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -984,7 +984,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="WebActivatorEx">
-          <HintPath>..\..\..\packages\WebActivatorEx\lib\net40\WebActivatorEx.dll</HintPath>
+          <HintPath>..\..\packages\WebActivatorEx\lib\net40\WebActivatorEx.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -995,12 +995,12 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
       <ItemGroup>
         <Reference Include="WebGrease">
-          <HintPath>..\..\..\packages\WebGrease\lib\WebGrease.dll</HintPath>
+          <HintPath>..\..\packages\WebGrease\lib\WebGrease.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\..\packages\OctoPack\build\OctoPack.targets" Condition="Exists('..\..\..\packages\OctoPack\build\OctoPack.targets')" Label="Paket" />
+  <Import Project="..\..\packages\OctoPack\build\OctoPack.targets" Condition="Exists('..\..\packages\OctoPack\build\OctoPack.targets')" Label="Paket" />
 </Project>
