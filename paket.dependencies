@@ -1,0 +1,28 @@
+framework: net462
+redirects: on
+
+source https://api.nuget.org/v3/index.json
+
+nuget Antlr
+nuget Autofac.Mvc5
+nuget bootstrap = 3.3.2
+nuget DotNet.Highcharts
+nuget EntityFramework
+nuget FluentMigrator = 1.6.1
+nuget FluentMigrator.Runner
+nuget Foolproof
+nuget jQuery
+nuget jQuery.mmenu
+nuget jquery.mobile
+nuget jQuery.UI.Combined
+nuget Microsoft.AspNet.Mvc
+nuget Microsoft.AspNet.Razor
+nuget Microsoft.AspNet.Web.Optimization
+nuget Microsoft.AspNet.WebPages
+nuget Microsoft.Web.Infrastructure
+nuget Newtonsoft.Json
+nuget OctoPack
+nuget Select2.js
+nuget WebActivatorEx
+nuget WebGrease
+nuget xunit

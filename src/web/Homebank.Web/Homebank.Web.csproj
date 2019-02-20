@@ -23,8 +23,7 @@
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,47 +45,7 @@
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNet.Highcharts">
-      <HintPath>..\..\..\packages\DotNet.Highcharts.4.0\lib\DotNet.Highcharts.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentMigrator, Version=1.6.1.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\FluentMigrator.1.6.1\lib\40\FluentMigrator.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FluentMigrator.Runner, Version=1.6.1.0, Culture=neutral, PublicKeyToken=aacfc7de5acabf05, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\FluentMigrator.Runner.1.6.1\lib\40\FluentMigrator.Runner.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FoolproofValidation, Version=0.9.5851.39121, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Foolproof.0.9.4518\lib\net45\FoolproofValidation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
@@ -97,63 +56,388 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
-    </Reference>
-    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Views\Ajax\" />
-    <Folder Include="Views\ViewSwitcher\" />
+    <Resource Include="fonts\glyphicons-halflings-regular.ttf">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\ajax-loader.gif">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\action-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\action-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\alert-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\alert-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-l-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-l-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-r-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-r-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-d-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-l-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-l-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-r-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-r-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-l-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-l-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-r-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-r-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\arrow-u-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\audio-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\audio-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\back-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\back-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\bars-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\bars-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\bullets-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\bullets-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\calendar-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\calendar-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\camera-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\camera-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-d-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-d-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-l-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-l-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-r-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-r-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-u-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\carat-u-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\check-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\check-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\clock-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\clock-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\cloud-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\cloud-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\comment-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\comment-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\delete-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\delete-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\edit-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\edit-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\eye-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\eye-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\forbidden-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\forbidden-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\forward-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\forward-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\gear-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\gear-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\grid-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\grid-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\heart-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\heart-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\home-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\home-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\info-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\info-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\location-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\location-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\lock-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\lock-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\mail-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\mail-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\minus-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\minus-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\navigation-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\navigation-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\phone-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\phone-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\plus-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\plus-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\power-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\power-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\recycle-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\recycle-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\refresh-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\refresh-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\search-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\search-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\shop-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\shop-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\star-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\star-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\tag-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\tag-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\user-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\user-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\video-black.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\images\icons-png\video-white.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_222222_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_444444_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_454545_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_555555_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_777620_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_777777_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_888888_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_cc0000_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
+    <Resource Include="Content\themes\base\images\ui-icons_ffffff_256x240.png">
+      <Paket>True</Paket>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\Container.cs" />
     <Compile Include="App_Start\Migrator.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\DateRangeAttribute.cs" />
     <Compile Include="Attributes\NotZeroAttribute.cs" />
@@ -193,30 +477,76 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Client Scripts\MvcFoolproofValidation.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Client Scripts\MvcFoolproofValidation.min.js">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Content\add-transaction.PNG" />
-    <Content Include="Content\addons\jquery.mmenu.counters.css" />
-    <Content Include="Content\addons\jquery.mmenu.dragopen.css" />
-    <Content Include="Content\addons\jquery.mmenu.header.css" />
-    <Content Include="Content\addons\jquery.mmenu.labels.css" />
-    <Content Include="Content\addons\jquery.mmenu.searchfield.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\select2.css" />
-    <Content Include="Content\css\select2.min.css" />
-    <Content Include="Content\extensions\jquery.mmenu.effects.css" />
-    <Content Include="Content\extensions\jquery.mmenu.fullscreen.css" />
-    <Content Include="Content\extensions\jquery.mmenu.ie8.css" />
-    <Content Include="Content\extensions\jquery.mmenu.positioning.css" />
-    <Content Include="Content\extensions\jquery.mmenu.themes.css" />
-    <Content Include="Content\extensions\jquery.mmenu.widescreen.css" />
+    <Content Include="Content\addons\jquery.mmenu.counters.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\addons\jquery.mmenu.dragopen.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\addons\jquery.mmenu.header.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\addons\jquery.mmenu.labels.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\addons\jquery.mmenu.searchfield.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-theme.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-theme.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\css\select2.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\css\select2.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.effects.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.fullscreen.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.ie8.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.positioning.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.themes.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\extensions\jquery.mmenu.widescreen.css">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\icons-png\action-black.png" />
     <Content Include="Content\images\icons-png\action-white.png" />
@@ -318,133 +648,383 @@
     <Content Include="Content\images\icons-png\user-white.png" />
     <Content Include="Content\images\icons-png\video-black.png" />
     <Content Include="Content\images\icons-png\video-white.png" />
-    <Content Include="Content\images\icons-svg\action-black.svg" />
-    <Content Include="Content\images\icons-svg\action-white.svg" />
-    <Content Include="Content\images\icons-svg\alert-black.svg" />
-    <Content Include="Content\images\icons-svg\alert-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-l-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-l-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-r-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-r-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-d-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-l-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-l-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-r-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-r-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-l-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-l-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-r-black.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-r-white.svg" />
-    <Content Include="Content\images\icons-svg\arrow-u-white.svg" />
-    <Content Include="Content\images\icons-svg\audio-black.svg" />
-    <Content Include="Content\images\icons-svg\audio-white.svg" />
-    <Content Include="Content\images\icons-svg\back-black.svg" />
-    <Content Include="Content\images\icons-svg\back-white.svg" />
-    <Content Include="Content\images\icons-svg\bars-black.svg" />
-    <Content Include="Content\images\icons-svg\bars-white.svg" />
-    <Content Include="Content\images\icons-svg\bullets-black.svg" />
-    <Content Include="Content\images\icons-svg\bullets-white.svg" />
-    <Content Include="Content\images\icons-svg\calendar-black.svg" />
-    <Content Include="Content\images\icons-svg\calendar-white.svg" />
-    <Content Include="Content\images\icons-svg\camera-black.svg" />
-    <Content Include="Content\images\icons-svg\camera-white.svg" />
-    <Content Include="Content\images\icons-svg\carat-d-black.svg" />
-    <Content Include="Content\images\icons-svg\carat-d-white.svg" />
-    <Content Include="Content\images\icons-svg\carat-l-black.svg" />
-    <Content Include="Content\images\icons-svg\carat-l-white.svg" />
-    <Content Include="Content\images\icons-svg\carat-r-black.svg" />
-    <Content Include="Content\images\icons-svg\carat-r-white.svg" />
-    <Content Include="Content\images\icons-svg\carat-u-black.svg" />
-    <Content Include="Content\images\icons-svg\carat-u-white.svg" />
-    <Content Include="Content\images\icons-svg\check-black.svg" />
-    <Content Include="Content\images\icons-svg\check-white.svg" />
-    <Content Include="Content\images\icons-svg\clock-black.svg" />
-    <Content Include="Content\images\icons-svg\clock-white.svg" />
-    <Content Include="Content\images\icons-svg\cloud-black.svg" />
-    <Content Include="Content\images\icons-svg\cloud-white.svg" />
-    <Content Include="Content\images\icons-svg\comment-black.svg" />
-    <Content Include="Content\images\icons-svg\comment-white.svg" />
-    <Content Include="Content\images\icons-svg\delete-black.svg" />
-    <Content Include="Content\images\icons-svg\delete-white.svg" />
-    <Content Include="Content\images\icons-svg\edit-black.svg" />
-    <Content Include="Content\images\icons-svg\edit-white.svg" />
-    <Content Include="Content\images\icons-svg\eye-black.svg" />
-    <Content Include="Content\images\icons-svg\eye-white.svg" />
-    <Content Include="Content\images\icons-svg\forbidden-black.svg" />
-    <Content Include="Content\images\icons-svg\forbidden-white.svg" />
-    <Content Include="Content\images\icons-svg\forward-black.svg" />
-    <Content Include="Content\images\icons-svg\forward-white.svg" />
-    <Content Include="Content\images\icons-svg\gear-black.svg" />
-    <Content Include="Content\images\icons-svg\gear-white.svg" />
-    <Content Include="Content\images\icons-svg\grid-black.svg" />
-    <Content Include="Content\images\icons-svg\grid-white.svg" />
-    <Content Include="Content\images\icons-svg\heart-black.svg" />
-    <Content Include="Content\images\icons-svg\heart-white.svg" />
-    <Content Include="Content\images\icons-svg\home-black.svg" />
-    <Content Include="Content\images\icons-svg\home-white.svg" />
-    <Content Include="Content\images\icons-svg\info-black.svg" />
-    <Content Include="Content\images\icons-svg\info-white.svg" />
-    <Content Include="Content\images\icons-svg\location-black.svg" />
-    <Content Include="Content\images\icons-svg\location-white.svg" />
-    <Content Include="Content\images\icons-svg\lock-black.svg" />
-    <Content Include="Content\images\icons-svg\lock-white.svg" />
-    <Content Include="Content\images\icons-svg\mail-black.svg" />
-    <Content Include="Content\images\icons-svg\mail-white.svg" />
-    <Content Include="Content\images\icons-svg\minus-black.svg" />
-    <Content Include="Content\images\icons-svg\minus-white.svg" />
-    <Content Include="Content\images\icons-svg\navigation-black.svg" />
-    <Content Include="Content\images\icons-svg\navigation-white.svg" />
-    <Content Include="Content\images\icons-svg\phone-black.svg" />
-    <Content Include="Content\images\icons-svg\phone-white.svg" />
-    <Content Include="Content\images\icons-svg\plus-black.svg" />
-    <Content Include="Content\images\icons-svg\plus-white.svg" />
-    <Content Include="Content\images\icons-svg\power-black.svg" />
-    <Content Include="Content\images\icons-svg\power-white.svg" />
-    <Content Include="Content\images\icons-svg\recycle-black.svg" />
-    <Content Include="Content\images\icons-svg\recycle-white.svg" />
-    <Content Include="Content\images\icons-svg\refresh-black.svg" />
-    <Content Include="Content\images\icons-svg\refresh-white.svg" />
-    <Content Include="Content\images\icons-svg\search-black.svg" />
-    <Content Include="Content\images\icons-svg\search-white.svg" />
-    <Content Include="Content\images\icons-svg\shop-black.svg" />
-    <Content Include="Content\images\icons-svg\shop-white.svg" />
-    <Content Include="Content\images\icons-svg\star-black.svg" />
-    <Content Include="Content\images\icons-svg\star-white.svg" />
-    <Content Include="Content\images\icons-svg\tag-black.svg" />
-    <Content Include="Content\images\icons-svg\tag-white.svg" />
-    <Content Include="Content\images\icons-svg\user-black.svg" />
-    <Content Include="Content\images\icons-svg\user-white.svg" />
-    <Content Include="Content\images\icons-svg\video-black.svg" />
-    <Content Include="Content\images\icons-svg\video-white.svg" />
-    <Content Include="Content\jquery.mmenu.all.css" />
-    <Content Include="Content\jquery.mmenu.css" />
-    <Content Include="Content\jquery.mobile-1.4.5.css" />
-    <Content Include="Content\jquery.mobile-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.external-png-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.external-png-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.icons-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.icons-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.inline-png-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.inline-png-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.inline-svg-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.inline-svg-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.structure-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.structure-1.4.5.min.css" />
-    <Content Include="Content\jquery.mobile.theme-1.4.5.css" />
-    <Content Include="Content\jquery.mobile.theme-1.4.5.min.css" />
+    <Content Include="Content\images\icons-svg\action-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\action-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\alert-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\alert-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-l-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-l-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-r-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-r-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-d-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-l-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-l-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-r-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-r-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-l-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-l-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-r-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-r-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\arrow-u-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\audio-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\audio-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\back-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\back-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\bars-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\bars-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\bullets-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\bullets-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\calendar-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\calendar-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\camera-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\camera-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-d-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-d-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-l-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-l-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-r-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-r-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-u-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\carat-u-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\check-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\check-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\clock-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\clock-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\cloud-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\cloud-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\comment-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\comment-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\delete-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\delete-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\edit-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\edit-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\eye-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\eye-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\forbidden-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\forbidden-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\forward-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\forward-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\gear-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\gear-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\grid-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\grid-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\heart-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\heart-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\home-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\home-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\info-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\info-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\location-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\location-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\lock-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\lock-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\mail-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\mail-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\minus-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\minus-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\navigation-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\navigation-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\phone-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\phone-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\plus-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\plus-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\power-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\power-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\recycle-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\recycle-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\refresh-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\refresh-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\search-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\search-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\shop-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\shop-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\star-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\star-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\tag-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\tag-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\user-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\user-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\video-black.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\images\icons-svg\video-white.svg">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mmenu.all.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mmenu.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.external-png-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.external-png-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.icons-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.icons-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.inline-png-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.inline-png-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.inline-svg-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.inline-svg-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.structure-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.structure-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.theme-1.4.5.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\jquery.mobile.theme-1.4.5.min.css">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Content\overview.PNG" />
     <Content Include="Content\template.PNG" />
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\accordion.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\all.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\autocomplete.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\base.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\button.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\core.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\datepicker.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\dialog.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\draggable.css">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -464,19 +1044,45 @@
     <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\themes\base\jquery-ui.css" />
-    <Content Include="Content\themes\base\jquery-ui.min.css" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\base\jquery-ui.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\jquery-ui.min.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\menu.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\progressbar.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\resizable.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\selectable.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\selectmenu.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\slider.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\sortable.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\spinner.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\tabs.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\theme.css">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\themes\base\tooltip.css">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Content\themes\dark-hive\images\animated-overlay.gif" />
     <Content Include="Content\themes\dark-hive\images\ui-bg_flat_30_cccccc_40x100.png" />
     <Content Include="Content\themes\dark-hive\images\ui-bg_flat_50_5c5c5c_40x100.png" />
@@ -495,132 +1101,373 @@
     <Content Include="Content\themes\dark-hive\jquery-ui-1.10.4.custom.css" />
     <Content Include="Content\themes\dark-hive\jquery-ui-1.10.4.custom.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\addons\jquery.mmenu.counters.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.counters.min.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.dragopen.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.dragopen.min.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.header.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.header.min.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.labels.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.labels.min.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.searchfield.js" />
-    <Content Include="Scripts\addons\jquery.mmenu.searchfield.min.js" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\jquery-3.3.1-vsdoc.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.counters.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.counters.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.dragopen.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.dragopen.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.header.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.header.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.labels.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.labels.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.searchfield.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\addons\jquery.mmenu.searchfield.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap-theme.css.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Content\bootstrap.css.map">
+      <Paket>True</Paket>
+    </Content>
     <None Include="Properties\PublishProfiles\curcas-homebank - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\curcas-homebank - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Publish.pubxml" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-all.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.src.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-blue.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-green.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-unica.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\gray.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid-light.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js" />
-    <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js" />
-    <Content Include="Scripts\i18n\af.js" />
-    <Content Include="Scripts\i18n\ar.js" />
-    <Content Include="Scripts\i18n\az.js" />
-    <Content Include="Scripts\i18n\bg.js" />
-    <Content Include="Scripts\i18n\bs.js" />
-    <Content Include="Scripts\i18n\ca.js" />
-    <Content Include="Scripts\i18n\cs.js" />
-    <Content Include="Scripts\i18n\da.js" />
-    <Content Include="Scripts\i18n\de.js" />
-    <Content Include="Scripts\i18n\dsb.js" />
-    <Content Include="Scripts\i18n\el.js" />
-    <Content Include="Scripts\i18n\en.js" />
-    <Content Include="Scripts\i18n\es.js" />
-    <Content Include="Scripts\i18n\et.js" />
-    <Content Include="Scripts\i18n\eu.js" />
-    <Content Include="Scripts\i18n\fa.js" />
-    <Content Include="Scripts\i18n\fi.js" />
-    <Content Include="Scripts\i18n\fr.js" />
-    <Content Include="Scripts\i18n\gl.js" />
-    <Content Include="Scripts\i18n\he.js" />
-    <Content Include="Scripts\i18n\hi.js" />
-    <Content Include="Scripts\i18n\hr.js" />
-    <Content Include="Scripts\i18n\hsb.js" />
-    <Content Include="Scripts\i18n\hu.js" />
-    <Content Include="Scripts\i18n\hy.js" />
-    <Content Include="Scripts\i18n\id.js" />
-    <Content Include="Scripts\i18n\is.js" />
-    <Content Include="Scripts\i18n\it.js" />
-    <Content Include="Scripts\i18n\ja.js" />
-    <Content Include="Scripts\i18n\km.js" />
-    <Content Include="Scripts\i18n\ko.js" />
-    <Content Include="Scripts\i18n\lt.js" />
-    <Content Include="Scripts\i18n\lv.js" />
-    <Content Include="Scripts\i18n\mk.js" />
-    <Content Include="Scripts\i18n\ms.js" />
-    <Content Include="Scripts\i18n\nb.js" />
-    <Content Include="Scripts\i18n\nl.js" />
-    <Content Include="Scripts\i18n\pl.js" />
-    <Content Include="Scripts\i18n\ps.js" />
-    <Content Include="Scripts\i18n\pt-BR.js" />
-    <Content Include="Scripts\i18n\pt.js" />
-    <Content Include="Scripts\i18n\ro.js" />
-    <Content Include="Scripts\i18n\ru.js" />
-    <Content Include="Scripts\i18n\sk.js" />
-    <Content Include="Scripts\i18n\sl.js" />
-    <Content Include="Scripts\i18n\sr-Cyrl.js" />
-    <Content Include="Scripts\i18n\sr.js" />
-    <Content Include="Scripts\i18n\sv.js" />
-    <Content Include="Scripts\i18n\th.js" />
-    <Content Include="Scripts\i18n\tr.js" />
-    <Content Include="Scripts\i18n\uk.js" />
-    <Content Include="Scripts\i18n\vi.js" />
-    <Content Include="Scripts\i18n\zh-CN.js" />
-    <Content Include="Scripts\i18n\zh-TW.js" />
+    <Content Include="Scripts\bootstrap.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\bootstrap.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-3d.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-all.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts-more.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\highcharts.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\canvas-tools.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\data.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\drilldown.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\exporting.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\funnel.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\heatmap.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\no-data-to-display.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\modules\solid-gauge.src.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-blue.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-green.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\dark-unica.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\gray.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid-light.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\grid.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\sand-signika.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\Highcharts-4.0.1\js\themes\skies.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\af.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ar.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\az.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\bg.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\bs.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ca.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\cs.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\da.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\de.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\dsb.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\el.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\en.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\es.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\et.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\eu.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\fa.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\fi.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\fr.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\gl.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\he.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\hi.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\hr.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\hsb.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\hu.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\hy.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\id.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\is.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\it.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ja.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\km.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ko.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\lt.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\lv.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\mk.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ms.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\nb.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\nl.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\pl.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ps.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\pt-BR.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\pt.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ro.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\ru.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\sk.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\sl.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\sr-Cyrl.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\sr.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\sv.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\th.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\tr.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\uk.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\vi.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\zh-CN.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\i18n\zh-TW.js">
+      <Paket>True</Paket>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.js" />
-    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery.mmenu.js" />
-    <Content Include="Scripts\jquery.mmenu.min.all.js" />
-    <Content Include="Scripts\jquery.mmenu.min.js" />
-    <Content Include="Scripts\jquery.mobile-1.4.5.js" />
-    <Content Include="Scripts\jquery.mobile-1.4.5.min.js" />
-    <Content Include="Scripts\npm.js" />
-    <Content Include="Scripts\select2.js" />
-    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.3.1.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.3.1.slim.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.12.1.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.mmenu.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.mmenu.min.all.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.mmenu.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.mobile-1.4.5.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery.mobile-1.4.5.min.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\npm.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\select2.js">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\select2.min.js">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -655,10 +1502,16 @@
     <Content Include="Views\Home\Overview.Mobile.cshtml" />
     <Content Include="Views\Transaction\Edit.Mobile.cshtml" />
     <Content Include="Views\Category\Edit.Mobile.cshtml" />
-    <Content Include="Scripts\jquery.mobile-1.4.5.min.map" />
+    <Content Include="Scripts\jquery.mobile-1.4.5.min.map">
+      <Paket>True</Paket>
+    </Content>
     <Content Include="Views\Reporting\Index.cshtml" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\jquery-3.3.1.min.map">
+      <Paket>True</Paket>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Homebank.Entities\Homebank.Entities.csproj">
@@ -679,7 +1532,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Ajax\" />
+    <Folder Include="Views\ViewSwitcher\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -709,17 +1567,207 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\..\..\packages\OctoPack.3.6.4\build\OctoPack.targets" Condition="Exists('..\..\..\packages\OctoPack.3.6.4\build\OctoPack.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\OctoPack.3.6.4\build\OctoPack.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\OctoPack.3.6.4\build\OctoPack.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="Antlr3.Runtime">
+          <HintPath>..\..\..\packages\Antlr\lib\Antlr3.Runtime.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="Autofac">
+          <HintPath>..\..\..\packages\Autofac\lib\net45\Autofac.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="Autofac.Integration.Mvc">
+          <HintPath>..\..\..\packages\Autofac.Mvc5\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="DotNet.Highcharts">
+          <HintPath>..\..\..\packages\DotNet.Highcharts\lib\DotNet.Highcharts.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <HintPath>..\..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>..\..\..\packages\EntityFramework\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="FluentMigrator">
+          <HintPath>..\..\..\packages\FluentMigrator\lib\40\FluentMigrator.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="FluentMigrator.Runner">
+          <HintPath>..\..\..\packages\FluentMigrator.Runner\lib\40\FluentMigrator.Runner.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="FoolproofValidation">
+          <HintPath>..\..\..\packages\Foolproof\lib\net45\FoolproofValidation.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="System.Web.Mvc">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc\lib\net45\System.Web.Mvc.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="System.Web.Razor">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.Razor\lib\net45\System.Web.Razor.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="System.Web.Optimization">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.Web.Optimization\lib\net40\System.Web.Optimization.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="System.Web.Helpers">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.Helpers.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Web.WebPages">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Web.WebPages.Deployment">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Web.WebPages.Razor">
+          <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="Microsoft.Web.Infrastructure">
+          <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="WebActivatorEx">
+          <HintPath>..\..\..\packages\WebActivatorEx\lib\net40\WebActivatorEx.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
+      <ItemGroup>
+        <Reference Include="WebGrease">
+          <HintPath>..\..\..\packages\WebGrease\lib\WebGrease.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="..\..\..\packages\OctoPack\build\OctoPack.targets" Condition="Exists('..\..\..\packages\OctoPack\build\OctoPack.targets')" Label="Paket" />
 </Project>
