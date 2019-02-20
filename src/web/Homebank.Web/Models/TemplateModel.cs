@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using Foolproof;
 using Homebank.Web.Attributes;
 
 namespace Homebank.Web.Models

@@ -10,7 +10,6 @@ nuget DotNet.Highcharts
 nuget EntityFramework
 nuget FluentMigrator = 1.6.1
 nuget FluentMigrator.Runner
-nuget Foolproof
 nuget jQuery
 nuget jQuery.UI.Combined
 nuget Microsoft.AspNet.Mvc

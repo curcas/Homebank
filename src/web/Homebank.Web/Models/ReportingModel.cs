@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DotNet.Highcharts;
-using Foolproof;
 using Homebank.Repositories;
 using Homebank.Web.Attributes;
 

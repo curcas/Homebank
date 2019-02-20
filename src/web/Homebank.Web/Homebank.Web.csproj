@@ -137,7 +137,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\DateRangeAttribute.cs" />
+    <Compile Include="Attributes\GreaterThanAttribute.cs" />
     <Compile Include="Attributes\NotZeroAttribute.cs" />
+    <Compile Include="Attributes\NotEqualToAttribute.cs" />
+    <Compile Include="Attributes\RequiredIfNotEmptyAttribute.cs" />
     <Compile Include="Attributes\TemplateNameUniqueAttribute.cs" />
     <Compile Include="Attributes\CategoryNameUniqueAttribute.cs" />
     <Compile Include="Attributes\AccountNameUniqueAttribute.cs" />
@@ -173,24 +176,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="Client Scripts\MvcFoolproofValidation.js">
-      <Paket>True</Paket>
-    </Content>
-    <Content Include="Client Scripts\MvcFoolproofValidation.min.js">
-      <Paket>True</Paket>
-    </Content>
     <Content Include="Content\add-transaction.PNG" />
     <Content Include="Content\bootstrap-theme.css">
       <Paket>True</Paket>
@@ -908,17 +893,6 @@
       <ItemGroup>
         <Reference Include="FluentMigrator.Runner">
           <HintPath>..\..\..\packages\FluentMigrator.Runner\lib\40\FluentMigrator.Runner.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.6.2'">
-      <ItemGroup>
-        <Reference Include="FoolproofValidation">
-          <HintPath>..\..\..\packages\Foolproof\lib\net45\FoolproofValidation.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
