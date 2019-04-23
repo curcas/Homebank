@@ -1,23 +1,25 @@
 ﻿using Homebank.Core.Entities;
-using Homebank.Core.Repositories;
+using Homebank.Core.Interfaces.Repositories;
 using Homebank.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 
 namespace Homebank.Web.Controllers
 {
 	[Authorize]
     public class TransactionController : BaseController
     {
-        private readonly AccountRepository _accountRepository;
-	    private readonly CategoryRepository _categoryRepository;
-		private readonly TransactionRepository _transactionRepository;
-	    private readonly TemplateRepository _templateRepository;
-		private readonly BookingRepository _bookingRepository;
+        private readonly IAccountRepository _accountRepository;
+	    private readonly ICategoryRepository _categoryRepository;
+		private readonly ITransactionRepository _transactionRepository;
+	    private readonly ITemplateRepository _templateRepository;
+		private readonly IBookingRepository _bookingRepository;
 
-		public TransactionController(UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, CategoryRepository categoryRepository, TemplateRepository templateRepository, BookingRepository bookingRepository)
-		    : base(userRepository, templateRepository, accountRepository)
+		public TransactionController(IUserRepository userRepository, IAccountRepository accountRepository, ITransactionRepository transactionRepository, ICategoryRepository categoryRepository, ITemplateRepository templateRepository, IBookingRepository bookingRepository)
+		    : base(userRepository)
 	    {
 		    _accountRepository = accountRepository;
 			_categoryRepository = categoryRepository;
@@ -31,39 +33,36 @@ namespace Homebank.Web.Controllers
 		    var model = new TransactionModel();
 		    var account = _accountRepository.GetById(HomebankUser, id);
 
-		    if (account != null)
-		    {
-				model.AccountName = account.Name;
-			    model.AccountId = account.Id;
-			    model.Date = DateTime.Now;
+            if(account == null)
+            {
+                return NotFound("Account not found");
+            }
 
-			    if (template != 0)
-			    {
-				    var tmpl = _templateRepository.GetById(HomebankUser, template);
+			model.AccountName = account.Name;
+			model.AccountId = account.Id;
+			model.Date = DateTime.Now;
 
-				    if (tmpl != null && account.Id == tmpl.Account.Id)
-				    {
-					    model.CategoryId = tmpl.Category.Id;
-					    model.Amount = tmpl.Amount;
-					    model.Description = tmpl.Description;
+			if (template != 0)
+			{
+				var tmpl = _templateRepository.GetById(HomebankUser, template);
 
-					    if (tmpl.ReferenceAccount != null)
-					    {
-						    model.ReferenceAccountId = tmpl.ReferenceAccount.Id;
-					    }
-				    }
-			    }
+				if (tmpl != null && account.Id == tmpl.Account.Id)
+				{
+					model.CategoryId = tmpl.Category.Id;
+					model.Amount = tmpl.Amount;
+					model.Description = tmpl.Description;
 
-				PrepareCategories(model);
-				PrepareReferenceAccounts(model);
-		    }
-		    else
-		    {
-			    ViewData["Error"] = "The account was not found!";
+					if (tmpl.ReferenceAccount != null)
+					{
+						model.ReferenceAccountId = tmpl.ReferenceAccount.Id;
+					}
+				}
 			}
 
-			ViewBag.Header = "Add transaction";
-		    return View("Edit", model);
+			PrepareCategories(model);
+			PrepareReferenceAccounts(model);
+
+			return View("Edit", model);
 	    }
 
 		[ValidateAntiForgeryToken]
@@ -76,7 +75,8 @@ namespace Homebank.Web.Controllers
 				{
 					Category = _categoryRepository.GetById(HomebankUser, model.CategoryId),
 					Date = model.Date,
-					Description = model.Description
+					Description = model.Description,
+                    Bookings = new List<Booking>()
 				};
 
 				var booking = new Booking
@@ -100,7 +100,7 @@ namespace Homebank.Web.Controllers
 
 				transaction.Bookings.Add(booking);
 
-				_transactionRepository.Save(transaction);
+				_transactionRepository.Add(transaction);
 				_transactionRepository.SaveChanges();
 
 				return RedirectToAction("Show", "Account", new {id, page = 1});
@@ -109,7 +109,6 @@ namespace Homebank.Web.Controllers
 			PrepareCategories(model);
 			PrepareReferenceAccounts(model);
 
-			ViewBag.Header = "Add transaction";
 			return View("Edit", model);
 	    }
 
@@ -119,28 +118,27 @@ namespace Homebank.Web.Controllers
 		    var a = _accountRepository.GetById(HomebankUser, account);
 		    var model = new TransactionModel();
 
-		    if (trans != null && account > 0)
-		    {
-			    model.DataId = trans.Id;
-				model.AccountName = a.Name;
-			    model.AccountId = a.Id;
-			    model.Amount = trans.Bookings.First(p => p.Account.Id == a.Id).Amount;
-			    model.CategoryId = trans.Category.Id;
-			    model.Date = trans.Date;
-			    model.Description = trans.Description;
+            if(trans == null)
+            {
+                return NotFound("Transaction not found");
+            }
 
-			    if (trans.Bookings.Count == 2)
-			    {
-				    model.ReferenceAccountId = trans.Bookings.First(p => p.Account.Id != a.Id).Account.Id;
-			    }
+			model.DataId = trans.Id;
+			model.AccountName = a.Name;
+			model.AccountId = a.Id;
+			model.Amount = trans.Bookings.First(p => p.Account.Id == a.Id).Amount;
+			model.CategoryId = trans.Category.Id;
+			model.Date = trans.Date;
+			model.Description = trans.Description;
 
-				PrepareCategories(model);
-				PrepareReferenceAccounts(model);
-		    }
+			if (trans.Bookings.Count == 2)
+			{
+				model.ReferenceAccountId = trans.Bookings.First(p => p.Account.Id != a.Id).Account.Id;
+			}
 
-		    ViewBag.Error = "Account or transaction not found!";
+			PrepareCategories(model);
+			PrepareReferenceAccounts(model);
 
-			ViewBag.Header = "Edit transaction";
 		    return View(model);
 	    }
 
@@ -183,13 +181,12 @@ namespace Homebank.Web.Controllers
 
 				trans.Bookings.Add(booking);
 
-				_transactionRepository.Save(trans);
+				_transactionRepository.Update(trans);
 				_transactionRepository.SaveChanges();
 
 			    return RedirectToAction("Show", "Account", new {id = account});
 		    }
 
-			ViewBag.Header = "Edit transaction";
 		    return View(model);
 	    }
 
@@ -210,7 +207,7 @@ namespace Homebank.Web.Controllers
 			    return RedirectToAction("Show", "Account", new {id = account});
 		    }
 
-		    return HttpNotFound();
+            return NotFound();
 	    }
 
 	    [NonAction]

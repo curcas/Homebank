@@ -1,15 +1,37 @@
-﻿namespace Homebank.Core.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Homebank.Core.Entities
 {
 	public class Template
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public string Description { get; set; }
-		public decimal Amount { get; set; }
+        //[Key]
+        public int Id { get; set; }
 
-		public virtual User User { get; set; }
-		public virtual Account Account { get; set; }
-		public virtual Category Category { get; set; }
-		public virtual Account ReferenceAccount { get; set; }
+        //[Required]
+        //[MaxLength(255)]
+        public string Name { get; set; }
+
+        //[Required]
+        //[MaxLength(255)]
+        public string Description { get; set; }
+
+        //[Required]
+        public decimal Amount { get; set; }
+
+        //[Required]
+        //[ForeignKey("User_Id")]
+        public virtual User User { get; set; }
+
+        //[Required]
+        //[ForeignKey("Account_Id")]
+        public virtual Account Account { get; set; }
+
+        //[Required]
+        //[ForeignKey("Category_Id")]
+        public virtual Category Category { get; set; }
+
+        //[ForeignKey("ReferenceAccount_Id")]
+        public virtual Account ReferenceAccount { get; set; }
 	}
 }

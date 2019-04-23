@@ -1,16 +1,19 @@
 ﻿using Homebank.Core.Entities;
-using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Homebank.Core.Mappings
 {
-	public class CategoryMapping : EntityTypeConfiguration<Category>
+	public class CategoryMapping : IEntityTypeConfiguration<Category>
 	{
-		public CategoryMapping()
-		{
-			HasKey(p => p.Id);
+        public void Configure(EntityTypeBuilder<Category> builder)
+        {
+            builder.HasKey(p => p.Id);
 
-			Property(p => p.Name).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Name");
-			Property(p => p.Active).IsRequired().HasColumnName("Active");
-		}
+            builder.Property(p => p.Name).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Name");
+            builder.Property(p => p.Active).IsRequired().HasColumnName("Active");
+
+            builder.HasOne(p => p.User).WithMany(p => p.Categories).HasForeignKey("User_Id").HasConstraintName("User_Id").IsRequired();
+        }
 	}
 }

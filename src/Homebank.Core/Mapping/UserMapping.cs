@@ -1,17 +1,18 @@
 ﻿using Homebank.Core.Entities;
-using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Homebank.Core.Mappings
 {
-	public class UserMapping : EntityTypeConfiguration<User>
+	public class UserMapping : IEntityTypeConfiguration<User>
 	{
-		public UserMapping()
-		{
-			HasKey(p => p.Id);
+        public void Configure(EntityTypeBuilder<User> builder)
+        {
+            builder.HasKey(p => p.Id);
 
-			Property(p => p.Name).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Name");
-			Property(p => p.Password).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Password");
-			Property(p => p.Salt).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Salt");
+            builder.Property(p => p.Name).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Name");
+            builder.Property(p => p.Password).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Password");
+            builder.Property(p => p.Salt).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Salt");
 		}
-	}
+    }
 }

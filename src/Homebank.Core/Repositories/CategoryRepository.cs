@@ -1,11 +1,12 @@
 ﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Homebank.Core.Repositories
 {
-	public class CategoryRepository : BaseRepository<Category>
-	{
+	public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
+    {
 		public CategoryRepository(DatabaseContext databaseContext)
 			: base(databaseContext)
 		{

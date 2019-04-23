@@ -1,38 +1,45 @@
 ﻿@model Homebank.Web.Models.AccountModel
 
-<form method="POST" role="form" class="form-horizontal">
-	@Html.AntiForgeryToken()
-	<div class="form-group">
-		@Html.LabelFor(m => m.Name, "Name", new { @class = "col-md-2 col-sm-2 control-label" })
-		<div class="col-md-10 col-sm-10">
-			@Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
-			@Html.ValidationMessageFor(m => m.Name, "", new { @class = "help-block text-danger" })
-		</div>
-	</div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Active, "Active", new { @class = "col-md-2 col-sm-2 control-label" })
-        <div class="col-md-10 col-sm-10">
-            @Html.CheckBoxFor(m => m.Active)
+<div class="row">
+    <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>Account</h4>
+            </div>
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <form method="post">
+                                <div class="form-group row">
+                                    <label asp-for="Name" class="col-sm-5 col-form-label"></label>
+                                    <div class="col-sm-5">
+                                        <input type="text" asp-for="Name" asp-invalid-for="Name" class="form-control" placeholder="Name" value="@Model?.Name" />
+                                        <span asp-validation-for="Name" class="invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="Active" class="col-sm-5 col-form-label"></label>
+                                    <div class="col-sm-5 form-check">
+                                        <div class="form-check">
+                                            <input type="checkbox" asp-for="Active" asp-invalid-for="Active" class="form-check-input" />
+                                        </div>                                        
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label asp-for="ControlDate" class="col-sm-5 col-form-label">Control Date</label>
+                                    <div class="col-sm-5">
+                                        <input type="date" asp-for="ControlDate" asp-invalid-for="ControlDate" class="form-control" value="@Model?.ControlDate?.ToString("yyyy-MM-dd")" />
+                                        <span asp-validation-for="ControlDate" class="invalid-feedback"></span>
+                                    </div>
+                                </div>
+                                <button asp-controller="Home" asp-action="Index" class="btn btn-danger">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ControlDate, "ControlDate", new { @class = "col-md-2 col-sm-2 control-label" })
-        <div class="col-md-10 col-sm-10">
-            @Html.EditorFor(m => m.ControlDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(m => m.ControlDate, "", new { @class = "help-block text-danger" })
-        </div>
-    </div>
-	<div class="form-group">
-		<div class="col-md-offset-2 col-sm-offset-2 col-md-10 col-sm-10">
-			<button type="submit" class="btn btn-default">Save</button>
-		</div>
-	</div>
-</form>
-
-@section scripts{
-    <script type="text/javascript">
-		$(document).ready(function () {
-            $("#ControlDate").datepicker({ dateFormat: 'yy-mm-dd', firstDay: 1 });
-		});
-    </script>
-}
+</div>

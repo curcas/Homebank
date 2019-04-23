@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Data.Entity.Migrations;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Homebank.Core.Repositories
 {
@@ -14,12 +13,17 @@ namespace Homebank.Core.Repositories
 			_set = databaseContext.Set<T>();
 		}
 
-		public void Save(T entity)
+		public void Add(T entity)
 		{
-			_set.AddOrUpdate(entity);
+			_set.Add(entity);
 		}
 
-		public void Remove(T entity)
+        public void Update(T entity)
+        {
+            _set.Update(entity);
+        }
+
+        public void Remove(T entity)
 		{
 			_set.Remove(entity);
 		}

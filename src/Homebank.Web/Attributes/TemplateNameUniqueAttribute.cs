@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Web;
-using System.Web.Mvc;
 using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
+using Homebank.Core.Interfaces.Repositories;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Homebank.Web.Attributes
 {
@@ -17,7 +17,8 @@ namespace Homebank.Web.Attributes
 
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-			var templateRepository = (TemplateRepository)DependencyResolver.Current.GetService(typeof(TemplateRepository));
+            var actionContextAccessor = (IActionContextAccessor)validationContext.GetService(typeof(IActionContextAccessor));
+			var templateRepository = (ITemplateRepository)validationContext.GetService(typeof(ITemplateRepository));
 
 			var templateProperty = validationContext.ObjectType.GetProperty(_IdPropertyName);
 			var templateId = Convert.ToInt32(templateProperty.GetValue(validationContext.ObjectInstance, null));
@@ -25,12 +26,12 @@ namespace Homebank.Web.Attributes
 			var accountProperty = validationContext.ObjectType.GetProperty("AccountId");
 			var accountId = Convert.ToInt32(accountProperty.GetValue(validationContext.ObjectInstance, null));
 
-			if (templateRepository.IsNameUnique(int.Parse(HttpContext.Current.User.Identity.Name), templateId, (string)value, accountId))
-			{
-				return null;
-			}
+            if (templateRepository.IsNameUnique(int.Parse(actionContextAccessor.ActionContext.HttpContext.User.Identity.Name), templateId, (string)value, accountId))
+            {
+            	return ValidationResult.Success;
+            }
 
-			return new ValidationResult(null);
-		}
+            return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
+        }
 	}
 }

@@ -1,13 +1,13 @@
-﻿using System.Data.Entity;
-using System.Security.Cryptography;
-using Homebank.Core.Entities;
+﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Homebank.Core.Repositories
 {
-	public class TransactionRepository : BaseRepository<Transaction>
-	{
+	public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
+    {
 		public TransactionRepository(DatabaseContext databaseContext)
 			: base(databaseContext)
 		{

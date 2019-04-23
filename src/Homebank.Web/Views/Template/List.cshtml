@@ -1,35 +1,42 @@
 ﻿@model IEnumerable<Homebank.Core.Entities.Template>
 
-<div class="page-header">
-	<div class="btn-group pull-right">
-		<a href="@Url.Action("Add", "Template")" class="btn btn-primary">Add template</a>
-	</div>
-	<h1>Templates</h1>
-</div>
-
 <div class="row">
-	<div class="col-md-12 col-sm-12">
-		<table class="table table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th>Name</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var template in Model)
-				{
-					<tr>
-						<td>@template.Account.Name</td>
-						<td>@template.Name</td>
-						<td>
-							@Html.ActionLink("Edit", "Edit", "Template", new { id = template.Id }, new { @class = "btn btn-primary btn-sm" })
-							@Html.ActionLink("Remove", "Remove", "Template", new { id = template.Id }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Do you really want to delete \"" + template.Name + "\"?')" })
-						</td>
-					</tr>
-				}
-			</tbody>
-		</table>
-	</div>
+    <div class="col-12">
+        <div class="card text-white border-0">
+            <div class="card-header bg-secondary">
+                <span>Templates</span>
+                <a asp-controller="Template" asp-action="Add" class="btn btn-sm btn-primary float-right">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="w-auto">Account</th>
+                            <th class="w-auto">Name</th>
+                            <th class="w-25">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var template in Model)
+                        {
+                            <tr>
+                                <td>@template.Account.Name</td>
+                                <td>@template.Name</td>
+                                <td>
+                                    <a asp-controller="Template" asp-action="Edit" asp-route-id="@template.Id" class="btn btn-sm btn-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-controller="Template" asp-action="Remove" asp-route-id="@template.Id" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete \'@template.Name\'?')">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

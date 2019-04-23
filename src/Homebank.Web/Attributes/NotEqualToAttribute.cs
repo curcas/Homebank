@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Homebank.Web.Attributes
 {
@@ -20,12 +16,12 @@ namespace Homebank.Web.Attributes
             var dependentProperty = validationContext.ObjectType.GetProperty(_DependentProperty);
             var dependentValue = dependentProperty.GetValue(validationContext.ObjectInstance, null);
 
-            if(value != dependentValue)
+            if(!value.Equals(dependentValue))
             {
-                return null;
+                return ValidationResult.Success;
             }
 
-            return new ValidationResult(null);
+            return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
         }
     }
 }

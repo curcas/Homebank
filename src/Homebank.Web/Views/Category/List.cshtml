@@ -1,51 +1,57 @@
 ﻿@model IEnumerable<Homebank.Core.Entities.Category>
 
-<div class="page-header">
-	<div class="btn-group pull-right">
-		<a href="@Url.Action("Add", "Category")" class="btn btn-primary">Add</a>
-	</div>
-	<h1>Categories</h1>
-</div>
-
 <div class="row">
-	<div class="col-md-12 col-sm-12">
-		<table class="table table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>In use</th>
-					<th>Active</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach (var category in Model)
-				{
-					<tr>
-						<td>@category.Name</td>
-						<td>
-							@if (category.Transactions.Count() > 0 || category.Templates.Count() > 0)
-							{
-								<span class="glyphicon glyphicon-ok"></span>
-							}
-						</td>
-						<td>
-							@if (category.Active)
-							{
-								<span class="glyphicon glyphicon-ok"></span>
-							}
-						</td>
-						<td>
-							@Html.ActionLink("Edit", "Edit", "Category", new { id = category.Id }, new { @class = "btn btn-primary btn-sm" })
-
-							@if (category.Transactions.Count() == 0 && category.Templates.Count() == 0)
-							{
-								@Html.ActionLink("Remove", "Remove", "Category", new {id = category.Id}, new {@class = "btn btn-danger btn-sm", onclick = "return confirm('Do you really want to delete \"" + category.Name + "\"?')"})
-							}
-						</td>
-					</tr>
-				}
-			</tbody>
-		</table>
-	</div>
+    <div class="col-12">
+        <div class="card text-white border-0">
+            <div class="card-header bg-secondary">
+                <span>Categories</span>
+                <a asp-controller="Category" asp-action="Add" class="btn btn-sm btn-primary float-right">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>In use</th>
+                            <th>Active</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model)
+                        {
+                            <tr>
+                                <td>@category.Name</td>
+                                <td>
+                                    @if (category.Transactions.Count() > 0 || category.Templates.Count() > 0)
+                                    {
+                                        <i class="fas fa-check"></i>
+                                    }
+                                </td>
+                                <td>
+                                    @if (category.Active)
+                                    {
+                                        <i class="fas fa-check"></i>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.Id" class="btn btn-sm btn-success">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    @if (category.Transactions.Count() == 0 && category.Templates.Count() == 0)
+                                    {
+                                        <a asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id" class="btn btn-sm btn-danger" onclick="return confirm('Do you really want to delete \'@category.Name\'?')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

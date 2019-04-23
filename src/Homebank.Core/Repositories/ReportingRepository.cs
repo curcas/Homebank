@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 
 namespace Homebank.Core.Repositories
 {
-	public class ReportingRepository : BaseRepository<object>
-	{
+	public class ReportingRepository : BaseRepository<object>, IReportingRepository
+    {
 		public ReportingRepository(DatabaseContext databaseContext)
 			: base(databaseContext)
 		{

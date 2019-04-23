@@ -28,7 +28,8 @@ namespace Homebank.Web.Models
 		public string Description { get; set; }
 
 		[Required(ErrorMessage = "Please enter an amount.")]
-		public decimal Amount { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:#.##}", ApplyFormatInEditMode = true)]
+        public decimal Amount { get; set; }
 
 		[Required(ErrorMessage = "Please enter choose an account.")]
 		[NotEqualTo("ReferenceAccountId", ErrorMessage = "Account is not allowed to be the same as reference account.")]

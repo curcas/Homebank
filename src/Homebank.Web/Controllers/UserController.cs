@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Homebank.Core.Repositories;
+﻿using Homebank.Core.Repositories;
 using Homebank.Web.Models;
 using Homebank.Core.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Homebank.Core.Interfaces.Repositories;
 
 namespace Homebank.Web.Controllers
 {
 	[Authorize]
     public class UserController : BaseController
     {
-		private readonly UserRepository _userRepository;
+		private readonly IUserRepository _userRepository;
 
-	    public UserController(UserRepository userRepository, TemplateRepository templateRepository,
-		    AccountRepository accountRepository)
-		    : base(userRepository, templateRepository, accountRepository)
+	    public UserController(IUserRepository userRepository)
+		    : base(userRepository)
 	    {
 			_userRepository = userRepository;
 	    }
@@ -25,7 +22,6 @@ namespace Homebank.Web.Controllers
         {
 			var model = new SettingsModel {Name = HomebankUser.Name, OriginalName = HomebankUser.Name};
 
-			ViewBag.Header = "Settings";
 	        return View(model);
         }
 
@@ -44,11 +40,12 @@ namespace Homebank.Web.Controllers
 					user.Password = StringHelpers.Hash(model.NewPassword + user.Salt);
 				}
 
-				_userRepository.Save(user);
+				_userRepository.Update(user);
 				_userRepository.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
 		    }
 
-			ViewBag.Header = "Settings";
 		    return View(model);
 	    }
     }

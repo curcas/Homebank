@@ -1,13 +1,13 @@
-﻿using System.Data.Entity;
-using Homebank.Core.Entities;
+﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Homebank.Core.Repositories
 {
-	public class AccountRepository : BaseRepository<Account>
-	{
+	public class AccountRepository : BaseRepository<Account>, IAccountRepository
+    {
 		public AccountRepository(DatabaseContext databaseContext)
 			: base(databaseContext)
 		{

@@ -1,22 +1,21 @@
 ﻿using System;
-using System.Web.Mvc;
 using Homebank.Core.Helpers;
 using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
+using Homebank.Core.Interfaces.Repositories;
 
 namespace Homebank.Web.Attributes
 {
 	public class PasswordValidAttribute : ValidationAttribute
 	{
-
-		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-			var userRepository = (UserRepository)DependencyResolver.Current.GetService(typeof(UserRepository));
+			var userRepository = (IUserRepository)validationContext.GetService(typeof(IUserRepository));
 
 			if (value == null)
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
 			var usernameProperty = validationContext.ObjectType.GetProperty("Name");
 			var username = Convert.ToString(usernameProperty.GetValue(validationContext.ObjectInstance, null));
@@ -25,15 +24,15 @@ namespace Homebank.Web.Attributes
 
 			if (user == null)
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
 			if (user.Password == StringHelpers.Hash((string) value + user.Salt))
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
-			return new ValidationResult(null);
-		}
+            return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
+        }
 	}
 }

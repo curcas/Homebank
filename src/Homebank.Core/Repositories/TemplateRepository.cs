@@ -1,11 +1,12 @@
 ﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Homebank.Core.Repositories
 {
-	public class TemplateRepository : BaseRepository<Template>
-	{
+	public class TemplateRepository : BaseRepository<Template>, ITemplateRepository
+    {
 		public TemplateRepository(DatabaseContext databaseContext)
 			: base(databaseContext)
 		{

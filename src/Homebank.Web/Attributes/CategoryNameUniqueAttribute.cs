@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Web;
-using System.Web.Mvc;
 using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
+using Homebank.Core.Interfaces.Repositories;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Homebank.Web.Attributes
 {
@@ -17,17 +17,18 @@ namespace Homebank.Web.Attributes
 
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-			var categoryRepository = (CategoryRepository)DependencyResolver.Current.GetService(typeof(CategoryRepository));
+            var actionContextAccessor = (IActionContextAccessor)validationContext.GetService(typeof(IActionContextAccessor));
+            var categoryRepository = (ICategoryRepository)validationContext.GetService(typeof(ICategoryRepository));
 
 			var idProperty = validationContext.ObjectType.GetProperty(_IdPropertyName);
 			var categoryId = Convert.ToInt32(idProperty.GetValue(validationContext.ObjectInstance, null));
 
-			if (categoryRepository.IsNameUnique(int.Parse(HttpContext.Current.User.Identity.Name), categoryId, (string)value))
-			{
-				return null;
-			}
+            if (categoryRepository.IsNameUnique(int.Parse(actionContextAccessor.ActionContext.HttpContext.User.Identity.Name), categoryId, (string)value))
+            {
+            	return ValidationResult.Success;
+            }
 
-			return new ValidationResult(null);
-		}
+            return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
+        }
 	}
 }

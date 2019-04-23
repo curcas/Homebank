@@ -1,29 +1,28 @@
-﻿using System.Web.Security;
-using Homebank.Core.Entities;
+﻿using Homebank.Core.Entities;
 using Homebank.Core.Helpers;
-using Homebank.Core.Repositories;
+using Homebank.Core.Interfaces.Repositories;
 using Homebank.Web.Models;
-using System;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Homebank.Web.Controllers
 {
 	public class SecurityController : BaseController
     {
-		private readonly UserRepository _userRepository;
+		private readonly IUserRepository _userRepository;
 
-		public SecurityController(UserRepository userRepository, TemplateRepository templateRepository, AccountRepository accountRepository)
-			: base(userRepository, templateRepository, accountRepository)
+		public SecurityController(IUserRepository userRepository)
+			: base(userRepository)
 		{
 			_userRepository = userRepository;
 		}
 
         public ActionResult Register()
         {
-			ViewBag.Header = "Register";
             return View(new RegisterModel());
         }
 
@@ -40,45 +39,55 @@ namespace Homebank.Web.Controllers
 				user.Password = StringHelpers.Hash(model.Password + salt);
 				user.Salt = salt;
 
-				_userRepository.Save(user);
+				_userRepository.Add(user);
 				_userRepository.SaveChanges();
 
-				ViewBag.Success = "You're successfully registered. You can now log in yourself.";
+                return RedirectToAction("Login", "Security");
 			}
 
-			ViewBag.Header = "Register";
 			return View(model);
 		}
 
-		public ActionResult Login()
+		public ActionResult Login(string returnUrl)
 		{
-			ViewBag.Header = "Login";
-			return View();
+			return View(new LoginModel {
+                ReturnUrl = returnUrl
+            });
 		}
 
 		[ValidateAntiForgeryToken]
 		[HttpPost]
-		public ActionResult Login(LoginModel model, string returnUrl)
+		public async Task<ActionResult> Login(LoginModel model, string returnUrl)
 	    {
 		    if (ModelState.IsValid)
 		    {
-				FormsAuthentication.SetAuthCookie(_userRepository.Get(model.Name).Id.ToString(), model.RememberMe);
+                var user = _userRepository.Get(model.Name);
+
+                var claims = new List<Claim> {
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
+                };
+
+                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var principal = new ClaimsPrincipal(identity);
+
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
 				if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
 			    {
 					return Redirect(returnUrl);
 			    }
 
-			    return RedirectToAction("Overview", "Home");
+			    return RedirectToAction("Index", "Home");
 		    }
 
-			ViewBag.Header = "Login";
+            model.ReturnUrl = returnUrl;
 		    return View(model);
 	    }
 
-		public ActionResult Logout()
+		public async Task<ActionResult> Logout()
 		{
-			FormsAuthentication.SignOut();
+            await HttpContext.SignOutAsync();
+
 			return RedirectToAction("Index", "Home");
 		}
 	}

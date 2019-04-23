@@ -1,25 +1,14 @@
-framework: net462
-redirects: on
+framework: netcoreapp2.2
 
 source https://api.nuget.org/v3/index.json
 
-nuget Antlr
-nuget Autofac.Mvc5
-nuget bootstrap = 3.3.2
-nuget DotNet.Highcharts
-nuget EntityFramework
-nuget FluentMigrator = 1.6.1
+nuget FluentMigrator
 nuget FluentMigrator.Runner
-nuget jQuery
-nuget jQuery.UI.Combined
-nuget Microsoft.AspNet.Mvc
-nuget Microsoft.AspNet.Razor
-nuget Microsoft.AspNet.Web.Optimization
-nuget Microsoft.AspNet.WebPages
-nuget Microsoft.Web.Infrastructure
-nuget Newtonsoft.Json
-nuget OctoPack
-nuget Select2.js
-nuget WebActivatorEx
-nuget WebGrease
+nuget Microsoft.AspNetCore.App
+nuget Microsoft.AspNetCore.Razor.Design
+nuget Microsoft.AspNetCore.TestHost
+nuget Microsoft.EntityFrameworkCore.Proxies
+nuget Microsoft.EntityFrameworkCore.SqlServer
+nuget Moq
 nuget xunit
+nuget xunit.runner.visualstudio

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
 namespace Homebank.Web.Attributes
 {
 	public class DateRangeAttribute : ValidationAttribute
@@ -10,7 +11,7 @@ namespace Homebank.Web.Attributes
 		{
             if(Nullable && value == null)
             {
-                return null;
+                return ValidationResult.Success;
             }
 
 			if (value is DateTime || value is DateTime?)
@@ -19,8 +20,8 @@ namespace Homebank.Web.Attributes
 
 				if (date >= new DateTime(1900, 1, 1) && date <= new DateTime(2100, 1, 1))
 				{
-					return null;
-				}
+                    return ValidationResult.Success;
+                }
 			}
 
 			return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));

@@ -1,23 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Homebank.Core.Entities;
-using Homebank.Core.Repositories;
-using System.Web.Mvc;
-using Template = Homebank.Web.Models.TemplateRendering.Template;
+using Homebank.Core.Interfaces.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Homebank.Web.Controllers
 {
     public class BaseController : Controller
     {
-	    private readonly UserRepository _userRepository;
-	    private readonly TemplateRepository _templateRepository;
-	    private readonly AccountRepository _accountRepository;
+	    private readonly IUserRepository _userRepository;
 
-	    public BaseController(UserRepository userRepository, TemplateRepository templateRepository, AccountRepository accountRepository)
+	    public BaseController(IUserRepository userRepository)
 	    {
 		    _userRepository = userRepository;
-		    _templateRepository = templateRepository;
-		    _accountRepository = accountRepository;
 	    }
 
 	    public User HomebankUser
@@ -33,46 +29,14 @@ namespace Homebank.Web.Controllers
 		    }
 	    }
 
-		protected override void OnActionExecuted(ActionExecutedContext filterContext)
-	    {
+        public override void OnActionExecuted(ActionExecutedContext context)
+        {
 		    if (!string.IsNullOrEmpty(User.Identity.Name))
 		    {
-			    filterContext.Controller.ViewBag.Username = HomebankUser.Name;
-				GetTemplates();
+                ViewBag.Username = HomebankUser.Name;
 		    }
 
-			base.OnActionExecuted(filterContext);
-	    }
-
-	    private void GetTemplates()
-	    {
-		    IList<Template> templateList = new List<Template>();
-		    var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
-
-		    foreach (var account in accounts)
-		    {
-				templateList.Add(new Template
-				{
-					Name = account.Name,
-					Link = Url.Action("Add", "Transaction", new { id = account.Id })
-				});
-
-			    foreach (var template in _templateRepository.GetAllByAccount(account.Id))
-			    {
-					templateList.Add(new Template
-					{
-						Name = template.Name,
-						Link = Url.Action("Add", "Transaction", new { id = template.Account.Id, template = template.Id })
-					});
-			    }
-
-			    if (accounts.Last().Id != account.Id)
-			    {
-				    templateList.Add(new Template {IsSeperator = true});
-			    }
-		    }
-
-		    ViewBag.Templates = templateList;
+			base.OnActionExecuted(context);
 	    }
     }
 }

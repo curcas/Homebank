@@ -1,21 +1,21 @@
 ﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using Homebank.Core.Repositories;
 using Homebank.Web.Models;
-using System;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Homebank.Web.Controllers
 {
 	[Authorize]
     public class AccountController : BaseController
     {
-	    private readonly AccountRepository _accountRepository;
-		private readonly TransactionRepository _transactionRepository;
-		private readonly TemplateRepository _templateRepository;
+	    private readonly IAccountRepository _accountRepository;
+		private readonly ITransactionRepository _transactionRepository;
+		private readonly ITemplateRepository _templateRepository;
 
-		public AccountController(UserRepository userRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, TemplateRepository templateRepository)
-		    : base(userRepository, templateRepository, accountRepository)
+		public AccountController(IUserRepository userRepository, IAccountRepository accountRepository, ITransactionRepository transactionRepository, ITemplateRepository templateRepository)
+		    : base(userRepository)
 	    {
 		    _accountRepository = accountRepository;
 		    _transactionRepository = transactionRepository;
@@ -25,10 +25,11 @@ namespace Homebank.Web.Controllers
 		public ActionResult Show(int id, int page = 1)
 		{
 			var account = _accountRepository.GetById(HomebankUser, id);
+            var templates = _templateRepository.GetAllByAccount(account.Id);
 
 			if (account == null)
 			{
-				throw new HttpException(404, "Account not found!");
+                return NotFound("Account not found!");
 			}
 
 			if (page < 1)
@@ -36,23 +37,22 @@ namespace Homebank.Web.Controllers
 				page = 1;
 			}
 
-            int totalTransactions;
             var model = new AccountShowModel
-			{
-				Account = account,
-				CurrentBalance = _accountRepository.GetCurrentBalance(id),
-				FutureBalance = _accountRepository.GetFutureBalance(id),
-				Transactions = _transactionRepository.GetByAccount(id, page, out totalTransactions),
-				TotalTransactions = totalTransactions,
-				CurrentPage = page
-			};
+            {
+                Account = account,
+                CurrentBalance = _accountRepository.GetCurrentBalance(id),
+                FutureBalance = _accountRepository.GetFutureBalance(id),
+                Transactions = _transactionRepository.GetByAccount(id, page, out int totalTransactions),
+                TotalTransactions = totalTransactions,
+                Templates = templates,
+                CurrentPage = page
+            };
 
-			return View(model);
+            return View(model);
 		}
 
 	    public ActionResult Add()
 	    {
-		    ViewBag.Header = "Add account";
 		    return View("Edit", new AccountModel {Active = true});
 	    }
 
@@ -64,13 +64,12 @@ namespace Homebank.Web.Controllers
 			{
 				var account = new Account {Name = model.Name, User = HomebankUser, Active = model.Active, ControlDate = model.ControlDate};
 
-				_accountRepository.Save(account);
+				_accountRepository.Add(account);
 				_accountRepository.SaveChanges();
 
 				return RedirectToAction("List", "Account");
 			}
 
-			ViewBag.Header = "Add account";
 			return View("Edit", model);
 		}
 
@@ -85,7 +84,7 @@ namespace Homebank.Web.Controllers
 
 			if (account == null)
 			{
-				throw new HttpException(404, "Account not found!");
+                return NotFound("Account not found!");
 			}
 
 			var model = new AccountModel
@@ -96,7 +95,6 @@ namespace Homebank.Web.Controllers
                 ControlDate = account.ControlDate
 			};
 
-			ViewBag.Header = "Edit account";
 			return View(model);
 		}
 
@@ -110,20 +108,19 @@ namespace Homebank.Web.Controllers
 
 				if (account == null)
 				{
-					throw new HttpException(404, "Account not found!");
+                    return NotFound("Account not found!");
 				}
 
 				account.Name = model.Name;
 				account.Active = model.Active;
                 account.ControlDate = model.ControlDate;
 
-				_accountRepository.Save(account);
+				_accountRepository.Update(account);
 				_accountRepository.SaveChanges();
 
-				ViewBag.Success = "Updated account.";
+                return RedirectToAction("List", "Account");
 			}
 
-			ViewBag.Header = "Edit account";
 			return View(model);
 		}
 
@@ -144,7 +141,7 @@ namespace Homebank.Web.Controllers
 				return RedirectToAction("List", "Account");
 			}
 
-			throw new HttpException(404, "Account not found");
+            return NotFound("Account not found");
 		}
 	}
 }

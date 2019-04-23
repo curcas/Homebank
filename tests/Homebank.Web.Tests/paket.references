@@ -1,0 +1,4 @@
+Microsoft.AspNetCore.TestHost
+Moq
+xunit
+xunit.runner.visualstudio

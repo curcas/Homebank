@@ -1,18 +1,19 @@
 ﻿using Homebank.Core.Entities;
-using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Homebank.Core.Mappings
 {
-	public class TransactionMapping : EntityTypeConfiguration<Transaction>
+	public class TransactionMapping : IEntityTypeConfiguration<Transaction>
 	{
-		public TransactionMapping()
-		{
-			HasKey(p => p.Id);
+        public void Configure(EntityTypeBuilder<Transaction> builder)
+        {
+            builder.HasKey(p => p.Id);
 
-			Property(p => p.Description).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Description");
-			Property(p => p.Date).IsRequired().HasColumnType("datetime").HasColumnName("Date");
+            builder.Property(p => p.Description).IsRequired().HasColumnType("nvarchar").HasMaxLength(255).HasColumnName("Description");
+            builder.Property(p => p.Date).IsRequired().HasColumnType("datetime").HasColumnName("Date");
 
-			HasMany(p => p.Bookings).WithRequired(p => p.Transaction).WillCascadeOnDelete();
-		}
+            builder.HasOne(p => p.Category).WithMany(p => p.Transactions).HasForeignKey("Category_Id").HasConstraintName("Category_Id").IsRequired();
+        }
 	}
 }

@@ -1,15 +1,19 @@
 ﻿using Homebank.Core.Entities;
-using System.Data.Entity.ModelConfiguration;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Homebank.Core.Mappings
 {
-	public class BookingMapping : EntityTypeConfiguration<Booking>
+	public class BookingMapping : IEntityTypeConfiguration<Booking>
 	{
-		public BookingMapping()
-		{
-			HasKey(p => p.Id);
+        public void Configure(EntityTypeBuilder<Booking> builder)
+        {
+            builder.HasKey(p => p.Id);
 
-			Property(p => p.Amount).IsRequired().HasColumnType("decimal").HasPrecision(10, 2).HasColumnName("Amount");
-		}
+            builder.Property(p => p.Amount).IsRequired().HasColumnType("decimal").HasColumnType("decimal(10, 2)").HasColumnName("Amount");
+
+            builder.HasOne(p => p.Account).WithMany(p => p.Bookings).HasForeignKey("Account_Id").HasConstraintName("Account_Id").IsRequired();
+            builder.HasOne(p => p.Transaction).WithMany(p => p.Bookings).HasForeignKey("Transaction_Id").HasConstraintName("Transaction_Id").IsRequired();
+        }
 	}
 }

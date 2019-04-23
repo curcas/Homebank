@@ -1,125 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
-using DotNet.Highcharts;
-using DotNet.Highcharts.Enums;
-using DotNet.Highcharts.Helpers;
-using DotNet.Highcharts.Options;
-using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using Homebank.Core.Repositories;
 using Homebank.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Homebank.Web.Controllers
 {
-	public class ReportingController : BaseController
-	{
-		private readonly ReportingRepository _reportingRepository;
-		private readonly CategoryRepository _categoryRepository;
-		private readonly AccountRepository _accountRepository;
+    public class ReportingController : BaseController
+    {
+        private readonly IReportingRepository _reportingRepository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly IAccountRepository _accountRepository;
 
-		public ReportingController(
-			ReportingRepository reportingRepository,
-			CategoryRepository categoryRepository,
-			AccountRepository accountRepository,
-			UserRepository userRepository,
-			TemplateRepository templateRepository
-			) : base(userRepository, templateRepository, accountRepository)
-		{
-			_reportingRepository = reportingRepository;
-			_categoryRepository = categoryRepository;
-			_accountRepository = accountRepository;
-		}
+        public ReportingController(IReportingRepository reportingRepository, ICategoryRepository categoryRepository, IAccountRepository accountRepository, IUserRepository userRepository)
+            : base(userRepository)
+        {
+            _reportingRepository = reportingRepository;
+            _categoryRepository = categoryRepository;
+            _accountRepository = accountRepository;
+        }
 
-		public ActionResult Index()
-		{
-			return View(new ReportingModel
-			{
-				StartDate = DateTime.Now.AddMonths(-1),
-				EndDate = DateTime.Now,
-				Accounts = GetAllAccounts(),
-				Categories = GetAllCategories()
-			});
-		}
+        public ActionResult Index()
+        {
+            return View(new ReportingModel
+            {
+                StartDate = DateTime.Now.AddMonths(-1),
+                EndDate = DateTime.Now,
+                ReportingTypes = GetReportTypes(),
+                Accounts = GetAllAccounts(),
+                Categories = GetAllCategories()
+            });
+        }
 
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Index(ReportingModel model)
-		{
-			Highcharts chart = null;
-			IEnumerable<ReportingRecord> transactions = null;
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ReportingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var transactions = _reportingRepository.SearchTransactions(HomebankUser, model.Category, model.Account, model.StartDate, model.EndDate, model.IncludeTransactionsToOtherAccounts, model.ReportingType);
+                var gridData = transactions.GroupBy(p => p.Category).Select(p => new ReportGroup(_categoryRepository.GetById(HomebankUser, p.Key).Name, p.Sum(a => a.Amount))).ToList();
 
-			if (ModelState.IsValid)
-			{
-				transactions = _reportingRepository.SearchTransactions(HomebankUser, model.Category, model.Account, model.StartDate, model.EndDate, model.IncludeTransactionsToOtherAccounts, model.ReportingType);
+                model.GridData = gridData;
+                model.Transactions = transactions.OrderBy(p => p.AccountName).ThenBy(p => p.Date).ThenBy(p => p.Id);
+            }
 
-				chart = new Highcharts("report")
-					.InitChart(new Chart
-					{
-						DefaultSeriesType = ChartTypes.Pie,
-					}).SetPlotOptions(new PlotOptions
-					{
-						Pie = new PlotOptionsPie
-						{
-							AllowPointSelect = true,
-							DataLabels = new PlotOptionsPieDataLabels
-							{
-								Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) + '% (' +  new Number(this.y).toLocaleString(undefined, { minimumFractionDigits: 2 }); + ')'; }"
-							}
-						}
-					}).SetTitle(new Title
-					{
-						Text = "Report"
-					}).SetTooltip(new Tooltip
-					{
-						Formatter = "function(){ return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +'% (' + new Number(this.y).toLocaleString(undefined, { minimumFractionDigits: 2 }); + ')'; }"
-					}).SetSeries(new Series
-					{
-						Type = ChartTypes.Pie,
-						Data =
-							new Data(
-								transactions.GroupBy(p => p.Category)
-									.Select(p => new object[] {_categoryRepository.GetById(HomebankUser, p.Key).Name, p.Sum(a => a.Amount)})
-									.ToArray())
-					});
 
-			}
+            model.ReportingTypes = GetReportTypes();
+            model.Accounts = GetAllAccounts();
+            model.Categories = GetAllCategories();
 
-			return View(new ReportingModel
-			{
-				Chart = chart,
-				Transactions = transactions != null ? transactions.OrderBy(p => p.AccountName).ThenBy(p => p.Date).ThenBy(p => p.Id) : null,
-				Accounts = GetAllAccounts(),
-				Categories = GetAllCategories()
-			});
-		}
+            return View(model);
+        }
 
-		[NonAction]
-		private Dictionary<int, string> GetAllAccounts()
-		{
-			var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
+        [NonAction]
+        private IEnumerable<SelectListItem> GetAllAccounts()
+        {
+            var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
 
-			accounts.Add(new Account
-			{
-				Id = 0,
-				Name = "All"
-			});
+            var list = new List<SelectListItem>
+            {
+                new SelectListItem("All", "0")
+            };
 
-			return accounts.OrderBy(p => p.Name).ToDictionary(a => a.Id, a => a.Name);
-		}
+            list.AddRange(accounts.Select(p => new SelectListItem(p.Name, p.Id.ToString())).OrderBy(p => p.Text));
 
-		[NonAction]
-		private Dictionary<int, string> GetAllCategories()
-		{
-			var categories = _categoryRepository.GetAllByUser(HomebankUser, true);
+            return list;
+        }
 
-			categories.Add(new Category
-			{
-				Id = 0,
-				Name = "All"
-			});
+        [NonAction]
+        private IEnumerable<SelectListItem> GetAllCategories()
+        {
+            var categories = _categoryRepository.GetAllByUser(HomebankUser, true);
 
-			return categories.OrderBy(p => p.Name).ToDictionary(a => a.Id, a => a.Name);
-		} 
-	}
+            var list = new List<SelectListItem>
+            {
+                new SelectListItem("All", "0")
+            };
+
+            list.AddRange(categories.Select(p => new SelectListItem(p.Name, p.Id.ToString())).OrderBy(p => p.Text));
+
+            return list;
+        }
+
+        [NonAction]
+        private IEnumerable<SelectListItem> GetReportTypes()
+        {
+            return new List<SelectListItem> {
+                new SelectListItem(Enum.GetName(typeof(ReportingType), ReportingType.Earnings), ReportingType.Earnings.ToString()),
+                new SelectListItem(Enum.GetName(typeof(ReportingType), ReportingType.Expenses), ReportingType.Expenses.ToString())
+            };
+        }
+    }
 }

@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using DotNet.Highcharts;
 using Homebank.Core.Repositories;
 using Homebank.Web.Attributes;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Homebank.Web.Models
 {
 	public class ReportingModel
 	{
-		public Highcharts Chart { get; set; }
+        public IList<ReportGroup> GridData;
 
 		[Display(Name = "Show")]
 		[Required]
 		public ReportingType ReportingType { get; set; }
+        public IEnumerable<SelectListItem> ReportingTypes { get; set; }
 
-		[Required(ErrorMessage = "Please enter a start date.")]
+        [Required(ErrorMessage = "Please enter a start date.")]
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
 		[DateRange(ErrorMessage = "Start date must be between 1900-01-01 and 2100-01-01.")]
 		[DataType(DataType.Text, ErrorMessage = "Please enter a valid start date.")]
@@ -28,12 +29,12 @@ namespace Homebank.Web.Models
 		[DataType(DataType.Text, ErrorMessage = "Please enter a valid end date.")]
 		public DateTime EndDate { get; set; }
 
-		public Dictionary<int, string> Accounts { get; set; }
+        public IEnumerable<SelectListItem> Accounts { get; set; }
 
-		[Required(ErrorMessage = "Please choose at least one account.")]
+        [Required(ErrorMessage = "Please choose at least one account.")]
 		public List<int> Account { get; set; }
 
-		public Dictionary<int, string> Categories { get; set; }
+        public IEnumerable<SelectListItem> Categories { get; set; }
 
 		[Required(ErrorMessage = "Please choose at least one category.")]
 		public List<int> Category { get; set; }
@@ -42,4 +43,16 @@ namespace Homebank.Web.Models
 
 		public IEnumerable<ReportingRecord> Transactions { get; set; } 
 	}
+
+    public struct ReportGroup
+    {
+        public ReportGroup(string name, decimal value)
+        {
+            Name = name;
+            Value = value;
+        }
+
+        public string Name { get; }
+        public decimal Value { get; }
+    }
 }

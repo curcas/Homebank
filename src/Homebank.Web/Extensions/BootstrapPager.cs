@@ -1,82 +1,56 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 namespace Homebank.Web.Extensions
 {
 	public static class BootstrapPagerExtension
 	{
-		public static MvcHtmlString BootstrapPager(this HtmlHelper helper, int currentPageIndex, Func<int, string> action, int totalItems, int pageSize = 10, int numberOfLinks = 5)
-		{
-			if (totalItems <= 0)
-			{
-				return MvcHtmlString.Empty;
-			}
+        public static IHtmlContent Pager(this IHtmlHelper helper, int currentPage, Func<int, string> action, int total, int pageSize = 10, int numberOfLinks = 5) {
+            var builder = new HtmlContentBuilder();
 
-			var totalPages = (int) Math.Ceiling(totalItems/(double) pageSize);
-			var lastPageNumber = (int) Math.Ceiling((double) currentPageIndex/numberOfLinks)*numberOfLinks;
-			var firstPageNumber = lastPageNumber - (numberOfLinks - 1);
-			var hasPreviousPage = currentPageIndex > 1;
-			var hasNextPage = currentPageIndex < totalPages;
+            if (total <= 0) {
+                return builder;
+            }
 
-			if (lastPageNumber > totalPages)
-			{
-				lastPageNumber = totalPages;
-			}
+            var totalPages = (int)Math.Ceiling(total / (double)pageSize);
+            var lastPageNumber = (int)Math.Ceiling((double)currentPage / numberOfLinks) * numberOfLinks;
+            var firstPageNumber = lastPageNumber - (numberOfLinks - 1);
+            var hasPreviousPage = currentPage > 1;
+            var hasNextPage = currentPage < totalPages;
 
-			var ul = new TagBuilder("ul");
-			ul.AddCssClass("pagination");
-			ul.InnerHtml += addLink(1, action, currentPageIndex == 1, "disabled", "<<", "First Page");
-			ul.InnerHtml += addLink(currentPageIndex - 1, action, !hasPreviousPage, "disabled", "<", "Previous Page");
+            if (lastPageNumber > totalPages)
+            {
+                lastPageNumber = totalPages;
+            }
 
-			for (int i = firstPageNumber; i <= lastPageNumber; i++)
-			{
-				ul.InnerHtml += addLink(i, action, i == currentPageIndex, "active", i.ToString(), i.ToString());
-			}
+            builder.AppendHtmlLine("<ul class=\"pagination\">");
 
-			ul.InnerHtml += addLink(currentPageIndex + 1, action, !hasNextPage, "disabled", ">", "Next Page");
-			ul.InnerHtml += addLink(totalPages, action, currentPageIndex == totalPages, "disabled", ">>", "Last Page");
+            builder.AppendHtml(addLink(1, action, currentPage == 1, "disabled", "<<", "First Page"));
+            builder.AppendHtml(addLink(currentPage - 1, action, !hasPreviousPage, "disabled", "<", "Previous Page"));
 
-			return MvcHtmlString.Create(ul.ToString());
-		}
-		
-		private static TagBuilder addLink(int index, Func<int, string> action, bool condition, string classToAdd, string linkText, string tooltip)
-		{
-			var li = new TagBuilder("li");
-			li.MergeAttribute("title", tooltip);
+            for (int i = firstPageNumber; i <= lastPageNumber; i++)
+            {
+                builder.AppendHtml(addLink(i, action, i == currentPage, "active", i.ToString(), i.ToString()));
+            }
 
-			if (condition)
-			{
-				li.AddCssClass(classToAdd);
-			}
+            builder.AppendHtml(addLink(currentPage + 1, action, !hasNextPage, "disabled", ">", "Next Page"));
+            builder.AppendHtml(addLink(totalPages, action, currentPage == totalPages, "disabled", ">>", "Last Page"));
 
-			var a = new TagBuilder("a");
-			a.MergeAttribute("href", !condition ? action(index) : "javascript:");
-			a.SetInnerText(linkText);
+            builder.AppendHtmlLine("</ul>");
 
-			li.InnerHtml = a.ToString();
-			return li;
-		}
+            return builder;
+        }
 
-		private static double getMiddlePage(double pages)
-		{
-			return Math.Ceiling(pages / 2);
-		}
+        private static HtmlContentBuilder addLink(int index, Func<int, string> action, bool condition, string classToAdd, string text, string tooltip)
+        {
+            var builder = new HtmlContentBuilder();
 
-		private static int getFirstPage(int current, int pageSize)
-		{
-			var first = 0;
+            builder.AppendHtmlLine($"<li class=\"page-item { (condition ? classToAdd : string.Empty) }\">");
+            builder.AppendHtmlLine($"<a class=\"page-link\" title=\"{tooltip}\" href=\"{ (!condition ? action(index) : "#") }\">{text}</a>");
+            builder.AppendHtmlLine("</li>");
 
-			if (current > getMiddlePage(pageSize))
-			{
-
-			}
-
-			if (first < 0)
-			{
-				first = 0;
-			}
-
-			return first;
-		}
+            return builder;
+        }
 	}
 }

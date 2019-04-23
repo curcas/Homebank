@@ -1,33 +1,26 @@
-﻿using Homebank.Core.Entities;
-using Homebank.Core.Repositories;
-using System;
+﻿using Homebank.Core.Repositories;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using Homebank.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Homebank.Core.Interfaces.Repositories;
 
 namespace Homebank.Web.Controllers
 {
 	public class HomeController : BaseController
 	{
-		private UserRepository _userRepository;
-		private readonly AccountRepository _accountRepository;
+		private IUserRepository _userRepository;
+		private readonly IAccountRepository _accountRepository;
 
-		public HomeController(UserRepository userRepository, AccountRepository accountRepository, TemplateRepository templateRepository)
-			: base(userRepository, templateRepository, accountRepository)
+		public HomeController(IUserRepository userRepository, IAccountRepository accountRepository)
+			: base(userRepository)
 		{
 			_userRepository = userRepository;
 			_accountRepository = accountRepository;
 		}
 
-		public ActionResult Index()
-		{
-			return View();
-		}
-
 		[Authorize]
-		public ActionResult Overview()
+		public ActionResult Index()
 		{
 			var accounts = _accountRepository.GetAllByUser(HomebankUser, true);
 
@@ -49,7 +42,6 @@ namespace Homebank.Web.Controllers
 				model.Accounts.Add(a);
 			}
 
-			ViewBag.Header = "Overview";
 			return View(model);
 		}
 	}

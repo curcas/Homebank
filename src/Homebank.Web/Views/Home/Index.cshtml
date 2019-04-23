@@ -1,27 +1,37 @@
-﻿<div class="container">
-	<div class="row">
-		<div class="jumbotron">
-			<h1>Homebank</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<img src="~/Content/add-transaction.png" alt="..." class="img-thumbnail">
-			<h2>Easy to use</h2>
-			<p>Create an account, a category and book your first entry!</p>
-			<p>No compilcated double entry accounting. Simple to use for standard users.</p>
-		</div>
-		<div class="col-md-4">
-			<img src="~/Content/overview.png" alt="..." class="img-thumbnail">
-			<h2>Focuses on your balance</h2>
-			<p>Homebank focuses on your current balance.</p>
-			<p>For most users this is the main idea of using such a tool. Keep track of your expenses and see what's left so you don't spend to much money!</p>
-		</div>
-		<div class="col-md-4">
-			<img src="~/Content/template.png" alt="..." class="img-thumbnail">
-			<h2>Templates</h2>
-			<p>You have countless of recurring entries? Bored of inserting the same data again and again?</p>
-			<p>Homebank has templates for such things! Create a template for you daily lunch expenses. Click on this template to create a new entry, enter the expense and click ok. Everything else will be prefilled for you.</p>
-		</div>
-	</div>
+﻿@model Homebank.Web.Models.AccountOverviewModel
+
+<div class="row">
+    <div class="col-12">
+        <div class="card text-white border-0">
+            <div class="card-header bg-secondary">Overview</div>
+            <div class="card-body p-0">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th class="w-50">Name</th>
+                            <th class="w-25">Future balance</th>
+                            <th class="w-25">Current balance</th>
+                        </tr>
+                    </thead>
+                    <tbody class="pointer">
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <tr onclick="window.location = '@Url.Action("Show", "Account", new { id = account.Id })';">
+                                <td>@account.Name</td>
+                                <td>@account.FutureBalance.ToString("F")</td>
+                                <td>@account.CurrentBalance.ToString("F")</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Total</td>
+                            <td>@Model.Accounts.Sum(a => a.FutureBalance).ToString("F")</td>
+                            <td>@Model.Accounts.Sum(a => a.CurrentBalance).ToString("F")</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

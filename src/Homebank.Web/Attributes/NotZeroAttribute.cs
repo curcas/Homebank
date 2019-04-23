@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 namespace Homebank.Web.Attributes
 {
 	public class NotZeroAttribute : ValidationAttribute
@@ -7,13 +8,13 @@ namespace Homebank.Web.Attributes
 		{
 			if (value is int && (int)value != 0)
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
 			if (value is decimal && (decimal)value != 0)
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
 			return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
 		}

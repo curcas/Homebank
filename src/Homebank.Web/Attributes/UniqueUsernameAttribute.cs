@@ -1,6 +1,6 @@
-﻿using Homebank.Core.Repositories;
+﻿using Homebank.Core.Interfaces.Repositories;
+using Homebank.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace Homebank.Web.Attributes
 {
@@ -15,7 +15,7 @@ namespace Homebank.Web.Attributes
 
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
 		{
-			var userRepository = (UserRepository)DependencyResolver.Current.GetService(typeof(UserRepository));
+			var userRepository = (IUserRepository)validationContext.GetService(typeof(IUserRepository));
 
 			if (!string.IsNullOrEmpty(_originalNamePropertyName))
 			{
@@ -24,16 +24,16 @@ namespace Homebank.Web.Attributes
 
 				if (originalName == (string)value || userRepository.Get((string)value) == null)
 				{
-					return null;
-				}
+                    return ValidationResult.Success;
+                }
 			}
 
 			if (userRepository.Get((string)value) == null)
 			{
-				return null;
-			}
+                return ValidationResult.Success;
+            }
 
-			return new ValidationResult(null);
-		}
+            return new ValidationResult(FormatErrorMessage(validationContext.DisplayName));
+        }
 	}
 }

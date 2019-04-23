@@ -1,21 +1,21 @@
-﻿using System.Linq;
-using System.Web;
-using Homebank.Core.Entities;
+﻿using Homebank.Core.Entities;
+using Homebank.Core.Interfaces.Repositories;
 using Homebank.Core.Repositories;
 using Homebank.Web.Models;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Homebank.Web.Controllers
 {
 	[Authorize]
     public class TemplateController : BaseController
 	{
-		private readonly TemplateRepository _templateRepository;
-		private readonly AccountRepository _accountRepository;
-		private readonly CategoryRepository _categoryRepository;
+		private readonly ITemplateRepository _templateRepository;
+		private readonly IAccountRepository _accountRepository;
+		private readonly ICategoryRepository _categoryRepository;
 
-		public TemplateController(UserRepository userRepository, TemplateRepository templateRepository, AccountRepository accountRepository, CategoryRepository categoryRepository)
-			: base(userRepository, templateRepository, accountRepository)
+		public TemplateController(IUserRepository userRepository, ITemplateRepository templateRepository, IAccountRepository accountRepository, ICategoryRepository categoryRepository)
+			: base(userRepository)
 		{
 			_templateRepository = templateRepository;
 			_accountRepository = accountRepository;
@@ -43,7 +43,6 @@ namespace Homebank.Web.Controllers
 				model.Categories.Add(category.Id, category.Name);
 			}
 
-			ViewBag.Header = "Add template";
 			return View("Edit", model);
 		}
 
@@ -64,7 +63,7 @@ namespace Homebank.Web.Controllers
 					User = HomebankUser
 				};
 
-				_templateRepository.Save(template);
+				_templateRepository.Add(template);
 				_templateRepository.SaveChanges();
 
 				return RedirectToAction("List", "Template");
@@ -82,7 +81,6 @@ namespace Homebank.Web.Controllers
 				model.Categories.Add(category.Id, category.Name);
 			}
 
-			ViewBag.Header = "Add template";
 			return View("Edit", model);
 		}
 
@@ -92,7 +90,7 @@ namespace Homebank.Web.Controllers
 
 			if (template == null)
 			{
-				throw new HttpException(404, "Template not found!");
+                return NotFound("Template not found!");
 			}
 
 			var model = new TemplateModel
@@ -123,7 +121,6 @@ namespace Homebank.Web.Controllers
 				model.Categories.Add(template.Category.Id, template.Category.Name);
 			}
 
-			ViewBag.Header = "Edit template";
 			return View(model);
 		}
 
@@ -137,7 +134,7 @@ namespace Homebank.Web.Controllers
 			{
 				if (template == null)
 				{
-					throw new HttpException(404, "Template not found");
+                    return NotFound("Template not found");
 				}
 
 				template.Name = model.Name;
@@ -147,11 +144,11 @@ namespace Homebank.Web.Controllers
 				template.Account = _accountRepository.GetById(HomebankUser, model.AccountId);
 				template.ReferenceAccount = _accountRepository.GetById(HomebankUser, model.ReferenceAccountId);
 
-				_templateRepository.Save(template);
+				_templateRepository.Update(template);
 				_templateRepository.SaveChanges();
 
-				ViewBag.Success = "Updated template";
-			}
+                return RedirectToAction("List", "Template");
+            }
 
 			model.ReferenceAccounts.Add(0, "No reference account");
 			foreach (var account in _accountRepository.GetAllByUser(HomebankUser, true))
@@ -170,7 +167,6 @@ namespace Homebank.Web.Controllers
 				model.Categories.Add(template.Category.Id, template.Category.Name);
 			}
 
-			ViewBag.Header = "Edit template";
 			return View(model);
 		}
 
@@ -180,7 +176,7 @@ namespace Homebank.Web.Controllers
 
 			if (template == null)
 			{
-				throw new HttpException(404, "Template not found!");
+                return NotFound("Template not found!");
 			}
 
 			_templateRepository.Remove(template);
